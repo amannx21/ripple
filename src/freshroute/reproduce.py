@@ -82,6 +82,10 @@ def main(argv=None) -> dict:
     alpha, g = select_alpha(tune, float(s["scenarios"].get("alpha_selection_tolerance_pct", 0.5)))
     tune.to_csv(out_dir / "tuning.csv", index=False)
     print(f"[tuning] seeds {tuning[0]}-{tuning[-1]} ({len(tuning)}): alpha grid {grid} -> chosen alpha {alpha} "
+    import sys
+
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
           f"({time.perf_counter() - t0:.0f}s)")
 
     # 2. held-out evaluation
@@ -130,6 +134,7 @@ def main(argv=None) -> dict:
         comp.append(paired(held, METHOD_PLANNER, bl, "spoilage_pct", higher_is_better=False))
         comp.append(paired(held, METHOD_PLANNER, bl, "fulfillment_pct"))
         comp.append(paired(held, METHOD_PLANNER, bl, "net_revenue"))
+        comp.append(paired(held, METHOD_PLANNER, bl, "spoiled_or_diverted_pct", higher_is_better=False))
     dis_summary = {}
     for k, gk in dis.groupby("disruption"):
         dis_summary[k] = {"summary": summarize(gk, metrics3),
@@ -154,7 +159,8 @@ def main(argv=None) -> dict:
         "quick_mode": bool(args.quick),
         "tuning_table": _r(g.sort_values("alpha").to_dict(orient="records")),
         "alpha_selection_rule": f"smallest alpha within {s['scenarios'].get('alpha_selection_tolerance_pct', 0.5)}% of the best mean tuning-set net revenue",
-        "heldout": {"n_scenarios": len(heldout), "summary": _r(summarize(held, metrics3 + ("diverted_kg", "unmet_kg", "min_dest_fill_pct", "net_revenue_excl_carry"))),
+        "heldout": {"n_scenarios": len(heldout), "summary": _r(summarize(held, metrics3 + ("diverted_kg", "unmet_kg", "min_dest_fill_pct", "net_revenue_excl_carry",
+                                                                                  "spoiled_or_diverted_pct", "spoiled_kg", "sold_kg"))),
                     "paired_vs_baselines": _r(comp)},
         "organizer_scenarios": _r(summarize(pd.DataFrame(org), metrics3)) if org else None,
         "disruptions": _r(dis_summary),
@@ -185,13 +191,17 @@ def main(argv=None) -> dict:
     (out_dir / "run_log.json").write_text(json.dumps({"runtime_s": round(time.perf_counter() - t_start, 1),
                                                        "finished_unix": int(time.time())}, indent=2))
 
+    if not args.quick:
+        from .report import main as write_report
+
+        write_report()
     sm = scorecard["heldout"]["summary"]
     print("\n=== HEADLINE (held-out, %d scenarios, %s data, alpha=%s) ===" % (len(heldout), label, alpha))
     for m in (METHOD_PLANNER, METHOD_DET, METHOD_FIFO, METHOD_GREEDY):
         x = sm[m]
         print(f"{m:38s} spoilage {x['spoilage_pct']['mean']:6.2f}%  fulfilled {x['fulfillment_pct']['mean']:6.2f}%  "
               f"net INR {x['net_revenue']['mean']:12,.0f}  violations/plan {x['violations_mean']:.2f}")
-    for c in comp[:3]:
+    for c in comp[:4]:
         print(f"vs FIFO {c['metric']:16s} mean diff {c['mean_diff']:12,.2f}  95% CI [{c['ci95_low']:,.2f}, {c['ci95_high']:,.2f}]  "
               f"better in {c['win_rate_pct']:.0f}% of scenarios")
     print(f"base plan: {plan.status}, {len(viol)} violations, solve {plan.solve_time_s:.2f}s")

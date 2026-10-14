@@ -14,14 +14,11 @@ def diurnal_profile(mean_c: float, amp_c: float, hours: int, departure_hour: flo
 
 
 def build_forecasts(inst, departure_hour: float | None = None) -> dict[str, np.ndarray]:
+    """Scenario offsets are applied by scenarios.apply_scenario, not here."""
     plan = inst.settings.get("planning", {})
     hours = int(plan.get("max_horizon_hours", 96))
     dep = plan.get("departure_hour", 20) if departure_hour is None else departure_hour
-    scen = inst.scenario
     out = {}
     for lid, lane in inst.lanes.items():
-        off = 0.0
-        if scen is not None:
-            off = scen.temp_offset_c + scen.lane_temp_offset_c.get(lid, 0.0)
-        out[lid] = diurnal_profile(lane.ambient_mean_c, lane.ambient_amp_c, hours, dep, off)
+        out[lid] = diurnal_profile(lane.ambient_mean_c, lane.ambient_amp_c, hours, dep, 0.0)
     return out

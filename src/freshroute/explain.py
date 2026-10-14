@@ -126,3 +126,38 @@ def counterfactual_cards(inst: Instance, risk: RiskTable, plan, batch_ids: list[
             "sar_shipped_alternative": sar_alt,
         })
     return cards
+
+
+def discount_timing(inst: Instance, risk: RiskTable, batch_id: str, dest_id: str) -> pd.DataFrame:
+    """Markdown now vs. hold one cycle and sell then, for each discount level (expected value per kg).
+
+    Uses the batch's Monte Carlo arrival-life samples; waiting shifts every sample down by the life the batch
+    loses while held at the hub (median). Late-arrival probability is taken from today's estimate.
+    Requires a RiskTable computed with keep_samples=True.
+    """
+    import numpy as np
+
+    from .economics import ship_value_per_kg
+    from .shelflife import rate_multiplier, required_life
+
+    A = risk.samples[(batch_id, dest_id)]
+    b = inst.batch(batch_id)
+    com = inst.commodities[b.commodity]
+    lane = inst.lane_for(b.origin, dest_id)
+    hub = inst.hubs[b.origin]
+    hold_days = float(inst.settings.get("planning", {}).get("hold_days", 1))
+    lost = hold_days * float(rate_multiplier(hub.storage_temp_c, com))
+    p_late = float(risk.row(batch_id, dest_id, 0.0).p_late_any)
+    rows = []
+    for k in inst.cost_model.discount.levels:
+        R = required_life(com, k, inst.cost_model.discount.sell_speedup)
+        out = {"discount": k, "required_life_d": R}
+        for when, shift, extra in (("now", 0.0, 0.0), ("after 1-day hold", lost,
+                                                       inst.cost_model.holding_cost_per_kg_day * hold_days)):
+            good = float(np.mean(A - shift >= R))
+            p_ok = good * (1 - p_late)
+            v = ship_value_per_kg(inst, b.commodity, dest_id, lane, k, p_ok, good * p_late, 1 - good)
+            out[f"P(ok) {when}"] = p_ok
+            out[f"value/kg {when}"] = v["net"] - extra
+        rows.append(out)
+    return pd.DataFrame(rows)

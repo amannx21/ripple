@@ -1,0 +1,1461 @@
+{
+  "data_source": "SYNTHETIC",
+  "data_note": "SYNTHETIC DATA: seeded generator, not real-world data; results are not real-world performance",
+  "cost_model_source": "cost_model.yaml (bundled placeholder)",
+  "risk_alpha_tuned": 0.15,
+  "alpha_grid": [
+    0.02,
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.3
+  ],
+  "monte_carlo_samples": 1000,
+  "seed_sets": {
+    "tuning": [
+      0,
+      99,
+      100
+    ],
+    "heldout": [
+      1000,
+      1499,
+      500
+    ],
+    "disruption": [
+      1000,
+      1059,
+      60
+    ],
+    "sensitivity": [
+      3000,
+      3059,
+      60
+    ]
+  },
+  "quick_mode": false,
+  "tuning_table": [
+    {
+      "alpha": 0.02,
+      "net_revenue": 1440201.1679,
+      "spoilage_pct": 0.9159,
+      "fulfillment_pct": 15.6369
+    },
+    {
+      "alpha": 0.05,
+      "net_revenue": 2468810.6324,
+      "spoilage_pct": 3.3994,
+      "fulfillment_pct": 55.813
+    },
+    {
+      "alpha": 0.1,
+      "net_revenue": 2597440.3451,
+      "spoilage_pct": 4.699,
+      "fulfillment_pct": 60.3438
+    },
+    {
+      "alpha": 0.15,
+      "net_revenue": 2623420.862,
+      "spoilage_pct": 5.4811,
+      "fulfillment_pct": 61.8678
+    },
+    {
+      "alpha": 0.2,
+      "net_revenue": 2624664.3143,
+      "spoilage_pct": 5.9678,
+      "fulfillment_pct": 62.797
+    },
+    {
+      "alpha": 0.3,
+      "net_revenue": 2626548.381,
+      "spoilage_pct": 6.2823,
+      "fulfillment_pct": 63.4034
+    }
+  ],
+  "alpha_selection_rule": "smallest alpha within 0.5% of the best mean tuning-set net revenue",
+  "heldout": {
+    "n_scenarios": 500,
+    "summary": {
+      "Baseline A: FIFO": {
+        "spoilage_pct": {
+          "mean": 34.3667,
+          "median": 34.1858,
+          "p5": 23.7971,
+          "p95": 44.7265,
+          "n": 500
+        },
+        "fulfillment_pct": {
+          "mean": 52.0101,
+          "median": 52.3205,
+          "p5": 39.8052,
+          "p95": 63.8594,
+          "n": 500
+        },
+        "net_revenue": {
+          "mean": 1030792.1211,
+          "median": 1057681.3746,
+          "p5": 48342.0205,
+          "p95": 2014373.1544,
+          "n": 500
+        },
+        "diverted_kg": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p5": 0.0,
+          "p95": 0.0,
+          "n": 500
+        },
+        "unmet_kg": {
+          "mean": 66725.9937,
+          "median": 65875.4376,
+          "p5": 48780.232,
+          "p95": 86193.2334,
+          "n": 500
+        },
+        "min_dest_fill_pct": {
+          "mean": 20.5028,
+          "median": 21.1265,
+          "p5": 0.0,
+          "p95": 43.8693,
+          "n": 500
+        },
+        "net_revenue_excl_carry": {
+          "mean": 751223.2922,
+          "median": 801172.2116,
+          "p5": -202579.8429,
+          "p95": 1708292.2348,
+          "n": 500
+        },
+        "spoiled_or_diverted_pct": {
+          "mean": 34.3667,
+          "median": 34.1858,
+          "p5": 23.7971,
+          "p95": 44.7265,
+          "n": 500
+        },
+        "spoiled_kg": {
+          "mean": 48422.5805,
+          "median": 48027.1771,
+          "p5": 33691.4107,
+          "p95": 63306.0023,
+          "n": 500
+        },
+        "sold_kg": {
+          "mean": 72086.1997,
+          "median": 72556.8865,
+          "p5": 55467.4679,
+          "p95": 87445.5709,
+          "n": 500
+        },
+        "violations_mean": 16.944,
+        "plans_with_zero_violations_pct": 0.0,
+        "solve_time_s_mean": 0.0,
+        "solve_time_s_max": 0.0
+      },
+      "Baseline B: greedy-by-price": {
+        "spoilage_pct": {
+          "mean": 33.3244,
+          "median": 33.2828,
+          "p5": 22.6949,
+          "p95": 43.4674,
+          "n": 500
+        },
+        "fulfillment_pct": {
+          "mean": 55.5648,
+          "median": 56.3154,
+          "p5": 43.1368,
+          "p95": 66.863,
+          "n": 500
+        },
+        "net_revenue": {
+          "mean": 1177280.8652,
+          "median": 1197006.522,
+          "p5": 212584.5524,
+          "p95": 2177425.8608,
+          "n": 500
+        },
+        "diverted_kg": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p5": 0.0,
+          "p95": 0.0,
+          "n": 500
+        },
+        "unmet_kg": {
+          "mean": 61820.2022,
+          "median": 61281.7131,
+          "p5": 44867.654,
+          "p95": 81983.4855,
+          "n": 500
+        },
+        "min_dest_fill_pct": {
+          "mean": 23.7364,
+          "median": 25.4863,
+          "p5": 0.0,
+          "p95": 47.3079,
+          "n": 500
+        },
+        "net_revenue_excl_carry": {
+          "mean": 987150.9335,
+          "median": 1010061.3063,
+          "p5": 24974.7602,
+          "p95": 1969868.494,
+          "n": 500
+        },
+        "spoiled_or_diverted_pct": {
+          "mean": 33.3244,
+          "median": 33.2828,
+          "p5": 22.6949,
+          "p95": 43.4674,
+          "n": 500
+        },
+        "spoiled_kg": {
+          "mean": 46957.5469,
+          "median": 46486.6231,
+          "p5": 31921.3194,
+          "p95": 61805.7036,
+          "n": 500
+        },
+        "sold_kg": {
+          "mean": 76991.9912,
+          "median": 78112.036,
+          "p5": 59211.8383,
+          "p95": 91836.3517,
+          "n": 500
+        },
+        "violations_mean": 17.174,
+        "plans_with_zero_violations_pct": 0.0,
+        "solve_time_s_mean": 0.0,
+        "solve_time_s_max": 0.0
+      },
+      "Deterministic optimizer (ablation)": {
+        "spoilage_pct": {
+          "mean": 18.6279,
+          "median": 18.3788,
+          "p5": 8.9215,
+          "p95": 29.4321,
+          "n": 500
+        },
+        "fulfillment_pct": {
+          "mean": 58.4752,
+          "median": 59.2716,
+          "p5": 44.8145,
+          "p95": 70.1011,
+          "n": 500
+        },
+        "net_revenue": {
+          "mean": 1991880.512,
+          "median": 1984787.7846,
+          "p5": 843572.7043,
+          "p95": 3034553.4871,
+          "n": 500
+        },
+        "diverted_kg": {
+          "mean": 11358.6324,
+          "median": 10466.65,
+          "p5": 1868.605,
+          "p95": 23240.845,
+          "n": 500
+        },
+        "unmet_kg": {
+          "mean": 57789.5781,
+          "median": 56908.9553,
+          "p5": 39619.436,
+          "p95": 79171.4061,
+          "n": 500
+        },
+        "min_dest_fill_pct": {
+          "mean": 30.9748,
+          "median": 34.8695,
+          "p5": 0.0,
+          "p95": 53.1435,
+          "n": 500
+        },
+        "net_revenue_excl_carry": {
+          "mean": 1782555.036,
+          "median": 1775100.6194,
+          "p5": 630903.0653,
+          "p95": 2816862.3397,
+          "n": 500
+        },
+        "spoiled_or_diverted_pct": {
+          "mean": 26.6623,
+          "median": 26.4383,
+          "p5": 14.3538,
+          "p95": 39.0784,
+          "n": 500
+        },
+        "spoiled_kg": {
+          "mean": 26227.7324,
+          "median": 25875.1962,
+          "p5": 12155.8754,
+          "p95": 42619.0954,
+          "n": 500
+        },
+        "sold_kg": {
+          "mean": 83847.41,
+          "median": 84740.7512,
+          "p5": 64931.4311,
+          "p95": 99962.3505,
+          "n": 500
+        },
+        "violations_mean": 17.886,
+        "plans_with_zero_violations_pct": 0.0,
+        "solve_time_s_mean": 0.3104,
+        "solve_time_s_max": 0.587
+      },
+      "FreshRoute planner": {
+        "spoilage_pct": {
+          "mean": 5.3065,
+          "median": 4.3067,
+          "p5": 2.5098,
+          "p95": 10.6988,
+          "n": 500
+        },
+        "fulfillment_pct": {
+          "mean": 61.8711,
+          "median": 62.3578,
+          "p5": 49.1379,
+          "p95": 72.1202,
+          "n": 500
+        },
+        "net_revenue": {
+          "mean": 2629082.9029,
+          "median": 2670372.2143,
+          "p5": 2040607.4814,
+          "p95": 3129310.4364,
+          "n": 500
+        },
+        "diverted_kg": {
+          "mean": 32170.3106,
+          "median": 31815.0,
+          "p5": 18893.32,
+          "p95": 45877.9,
+          "n": 500
+        },
+        "unmet_kg": {
+          "mean": 53108.2672,
+          "median": 52003.8285,
+          "p5": 36888.3233,
+          "p95": 73517.1737,
+          "n": 500
+        },
+        "min_dest_fill_pct": {
+          "mean": 31.952,
+          "median": 35.6889,
+          "p5": 0.0,
+          "p95": 55.2338,
+          "n": 500
+        },
+        "net_revenue_excl_carry": {
+          "mean": 2507190.4484,
+          "median": 2543854.5292,
+          "p5": 1943197.8605,
+          "p95": 2984373.1781,
+          "n": 500
+        },
+        "spoiled_or_diverted_pct": {
+          "mean": 28.1106,
+          "median": 27.8587,
+          "p5": 18.2532,
+          "p95": 39.2962,
+          "n": 500
+        },
+        "spoiled_kg": {
+          "mean": 7477.78,
+          "median": 6151.1442,
+          "p5": 3521.6112,
+          "p95": 15358.3,
+          "n": 500
+        },
+        "sold_kg": {
+          "mean": 91264.4649,
+          "median": 92254.1288,
+          "p5": 73739.1239,
+          "p95": 106370.9777,
+          "n": 500
+        },
+        "violations_mean": 0.0,
+        "plans_with_zero_violations_pct": 100.0,
+        "solve_time_s_mean": 0.2903,
+        "solve_time_s_max": 0.6503
+      }
+    },
+    "paired_vs_baselines": [
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "spoilage_pct",
+        "n": 500,
+        "mean_diff": -29.0602,
+        "ci95_low": -29.5735,
+        "ci95_high": -28.5468,
+        "median_diff": -28.9871,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": -84.5591
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "fulfillment_pct",
+        "n": 500,
+        "mean_diff": 9.861,
+        "ci95_low": 9.3723,
+        "ci95_high": 10.3497,
+        "median_diff": 9.912,
+        "win_rate_pct": 96.2,
+        "relative_change_pct": 18.9598
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "net_revenue",
+        "n": 500,
+        "mean_diff": 1598290.7818,
+        "ci95_low": 1556806.1788,
+        "ci95_high": 1639775.3847,
+        "median_diff": 1594531.3661,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": 155.0546
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "spoiled_or_diverted_pct",
+        "n": 500,
+        "mean_diff": -6.2561,
+        "ci95_low": -6.6878,
+        "ci95_high": -5.8244,
+        "median_diff": -6.2112,
+        "win_rate_pct": 91.2,
+        "relative_change_pct": -18.2039
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline B: greedy-by-price",
+        "metric": "spoilage_pct",
+        "n": 500,
+        "mean_diff": -28.0179,
+        "ci95_low": -28.5246,
+        "ci95_high": -27.5111,
+        "median_diff": -28.087,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": -84.0762
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline B: greedy-by-price",
+        "metric": "fulfillment_pct",
+        "n": 500,
+        "mean_diff": 6.3062,
+        "ci95_low": 5.8793,
+        "ci95_high": 6.7332,
+        "median_diff": 5.9167,
+        "win_rate_pct": 91.0,
+        "relative_change_pct": 11.3493
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline B: greedy-by-price",
+        "metric": "net_revenue",
+        "n": 500,
+        "mean_diff": 1451802.0377,
+        "ci95_low": 1411396.7432,
+        "ci95_high": 1492207.3321,
+        "median_diff": 1448123.4403,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": 123.3182
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline B: greedy-by-price",
+        "metric": "spoiled_or_diverted_pct",
+        "n": 500,
+        "mean_diff": -5.2138,
+        "ci95_low": -5.618,
+        "ci95_high": -4.8096,
+        "median_diff": -5.2042,
+        "win_rate_pct": 88.2,
+        "relative_change_pct": -15.6456
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Deterministic optimizer (ablation)",
+        "metric": "spoilage_pct",
+        "n": 500,
+        "mean_diff": -13.3214,
+        "ci95_low": -13.8247,
+        "ci95_high": -12.8182,
+        "median_diff": -13.1481,
+        "win_rate_pct": 99.8,
+        "relative_change_pct": -71.5131
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Deterministic optimizer (ablation)",
+        "metric": "fulfillment_pct",
+        "n": 500,
+        "mean_diff": 3.3959,
+        "ci95_low": 2.8814,
+        "ci95_high": 3.9104,
+        "median_diff": 3.2323,
+        "win_rate_pct": 74.0,
+        "relative_change_pct": 5.8074
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Deterministic optimizer (ablation)",
+        "metric": "net_revenue",
+        "n": 500,
+        "mean_diff": 637202.3909,
+        "ci95_low": 591866.9688,
+        "ci95_high": 682537.813,
+        "median_diff": 644755.3999,
+        "win_rate_pct": 88.6,
+        "relative_change_pct": 31.99
+      },
+      {
+        "method": "FreshRoute planner",
+        "baseline": "Deterministic optimizer (ablation)",
+        "metric": "spoiled_or_diverted_pct",
+        "n": 500,
+        "mean_diff": 1.4483,
+        "ci95_low": 0.9115,
+        "ci95_high": 1.985,
+        "median_diff": 1.2576,
+        "win_rate_pct": 40.2,
+        "relative_change_pct": 5.432
+      }
+    ]
+  },
+  "organizer_scenarios": null,
+  "disruptions": {
+    "capacity_drop": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "spoilage_pct": {
+            "mean": 34.6428,
+            "median": 34.9269,
+            "p5": 25.3286,
+            "p95": 45.4353,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 51.6904,
+            "median": 51.2889,
+            "p5": 44.3592,
+            "p95": 59.2131,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 1020409.5583,
+            "median": 1026833.9066,
+            "p5": 132508.318,
+            "p95": 1886543.8805,
+            "n": 60
+          },
+          "violations_mean": 17.05,
+          "plans_with_zero_violations_pct": 0.0,
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "spoilage_pct": {
+            "mean": 5.083,
+            "median": 4.3101,
+            "p5": 2.5339,
+            "p95": 10.019,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 62.0813,
+            "median": 62.5389,
+            "p5": 54.4242,
+            "p95": 70.1589,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2676403.4811,
+            "median": 2724133.7563,
+            "p5": 2249944.1968,
+            "p95": 3169957.8067,
+            "n": 60
+          },
+          "violations_mean": 0.0,
+          "plans_with_zero_violations_pct": 100.0,
+          "solve_time_s_mean": 0.3166,
+          "solve_time_s_max": 0.6388
+        },
+        "Stale plan (no replan)": {
+          "spoilage_pct": {
+            "mean": 5.2284,
+            "median": 4.3841,
+            "p5": 2.6251,
+            "p95": 10.0682,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 63.75,
+            "median": 64.3322,
+            "p5": 55.4497,
+            "p95": 72.6922,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2713830.198,
+            "median": 2754864.16,
+            "p5": 2249944.1968,
+            "p95": 3189351.9179,
+            "n": 60
+          },
+          "violations_mean": 0.9333,
+          "plans_with_zero_violations_pct": 28.3333,
+          "solve_time_s_mean": 0.3291,
+          "solve_time_s_max": 0.6531
+        }
+      },
+      "replan_vs_stale_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Stale plan (no replan)",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": -37426.7168,
+        "ci95_low": -53281.0026,
+        "ci95_high": -21572.4311,
+        "median_diff": -21272.038,
+        "win_rate_pct": 15.0,
+        "relative_change_pct": -1.3791
+      },
+      "planner_vs_fifo_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 1655993.9228,
+        "ci95_low": 1545947.0135,
+        "ci95_high": 1766040.8321,
+        "median_diff": 1675937.4728,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": 162.2872
+      }
+    },
+    "delayed_truck": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "spoilage_pct": {
+            "mean": 35.3092,
+            "median": 35.2682,
+            "p5": 25.3285,
+            "p95": 45.3428,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 48.3755,
+            "median": 48.2875,
+            "p5": 40.0697,
+            "p95": 56.5554,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 902161.1368,
+            "median": 838327.8324,
+            "p5": 52545.1207,
+            "p95": 1797436.1855,
+            "n": 60
+          },
+          "violations_mean": 17.4667,
+          "plans_with_zero_violations_pct": 0.0,
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "spoilage_pct": {
+            "mean": 5.0023,
+            "median": 4.1657,
+            "p5": 2.2668,
+            "p95": 10.0417,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 58.6512,
+            "median": 59.0772,
+            "p5": 49.98,
+            "p95": 68.016,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2593129.9247,
+            "median": 2626598.9462,
+            "p5": 2162165.6203,
+            "p95": 3010980.547,
+            "n": 60
+          },
+          "violations_mean": 0.0,
+          "plans_with_zero_violations_pct": 100.0,
+          "solve_time_s_mean": 0.2899,
+          "solve_time_s_max": 0.5629
+        },
+        "Stale plan (no replan)": {
+          "spoilage_pct": {
+            "mean": 6.4634,
+            "median": 6.1256,
+            "p5": 2.8552,
+            "p95": 11.7446,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 57.9909,
+            "median": 57.8026,
+            "p5": 46.8901,
+            "p95": 67.6957,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2469607.89,
+            "median": 2487143.7568,
+            "p5": 1914494.54,
+            "p95": 3094901.0081,
+            "n": 60
+          },
+          "violations_mean": 6.5,
+          "plans_with_zero_violations_pct": 5.0,
+          "solve_time_s_mean": 0.339,
+          "solve_time_s_max": 1.1018
+        }
+      },
+      "replan_vs_stale_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Stale plan (no replan)",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 123522.0347,
+        "ci95_low": 73794.6988,
+        "ci95_high": 173249.3706,
+        "median_diff": 135670.6259,
+        "win_rate_pct": 71.6667,
+        "relative_change_pct": 5.0017
+      },
+      "planner_vs_fifo_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 1690968.788,
+        "ci95_low": 1583720.1348,
+        "ci95_high": 1798217.4411,
+        "median_diff": 1686074.0448,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": 187.4353
+      }
+    },
+    "demand_spike": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "spoilage_pct": {
+            "mean": 34.0636,
+            "median": 34.7661,
+            "p5": 24.7822,
+            "p95": 43.2293,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 50.9081,
+            "median": 50.4852,
+            "p5": 42.5115,
+            "p95": 60.1826,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 1123643.391,
+            "median": 1080950.7016,
+            "p5": 271819.1319,
+            "p95": 2038378.1736,
+            "n": 60
+          },
+          "violations_mean": 16.7333,
+          "plans_with_zero_violations_pct": 0.0,
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "spoilage_pct": {
+            "mean": 5.3515,
+            "median": 4.581,
+            "p5": 2.6326,
+            "p95": 10.1376,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 60.6431,
+            "median": 60.8023,
+            "p5": 52.4793,
+            "p95": 69.0042,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2750714.3131,
+            "median": 2772596.415,
+            "p5": 2288893.0087,
+            "p95": 3254558.8123,
+            "n": 60
+          },
+          "violations_mean": 0.0,
+          "plans_with_zero_violations_pct": 100.0,
+          "solve_time_s_mean": 0.3288,
+          "solve_time_s_max": 0.6871
+        },
+        "Stale plan (no replan)": {
+          "spoilage_pct": {
+            "mean": 5.1672,
+            "median": 4.3024,
+            "p5": 2.5708,
+            "p95": 10.0682,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 60.0319,
+            "median": 60.5136,
+            "p5": 51.6963,
+            "p95": 68.7004,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2727264.6306,
+            "median": 2765844.6676,
+            "p5": 2271245.4065,
+            "p95": 3189607.8479,
+            "n": 60
+          },
+          "violations_mean": 0.0,
+          "plans_with_zero_violations_pct": 100.0,
+          "solve_time_s_mean": 0.3215,
+          "solve_time_s_max": 0.7416
+        }
+      },
+      "replan_vs_stale_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Stale plan (no replan)",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 23449.6825,
+        "ci95_low": 11631.2973,
+        "ci95_high": 35268.0677,
+        "median_diff": 23741.291,
+        "win_rate_pct": 81.6667,
+        "relative_change_pct": 0.8598
+      },
+      "planner_vs_fifo_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 1627070.9221,
+        "ci95_low": 1519021.7266,
+        "ci95_high": 1735120.1176,
+        "median_diff": 1624604.1908,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": 144.8031
+      }
+    },
+    "heatwave": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "spoilage_pct": {
+            "mean": 41.8157,
+            "median": 41.5366,
+            "p5": 30.129,
+            "p95": 51.9571,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 46.4845,
+            "median": 45.1317,
+            "p5": 36.2318,
+            "p95": 57.4639,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 486645.4413,
+            "median": 470248.7696,
+            "p5": -366387.033,
+            "p95": 1518844.7173,
+            "n": 60
+          },
+          "violations_mean": 21.3667,
+          "plans_with_zero_violations_pct": 0.0,
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "spoilage_pct": {
+            "mean": 5.3379,
+            "median": 4.6015,
+            "p5": 2.3082,
+            "p95": 11.0259,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 55.0799,
+            "median": 55.0188,
+            "p5": 47.5928,
+            "p95": 65.0137,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2372629.602,
+            "median": 2380977.7394,
+            "p5": 1877502.5222,
+            "p95": 2826154.01,
+            "n": 60
+          },
+          "violations_mean": 0.0,
+          "plans_with_zero_violations_pct": 100.0,
+          "solve_time_s_mean": 0.2929,
+          "solve_time_s_max": 0.4473
+        },
+        "Stale plan (no replan)": {
+          "spoilage_pct": {
+            "mean": 11.7427,
+            "median": 11.9104,
+            "p5": 3.5791,
+            "p95": 20.7674,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 58.2773,
+            "median": 58.4136,
+            "p5": 45.901,
+            "p95": 67.8192,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2205034.0194,
+            "median": 2225653.8812,
+            "p5": 1382173.7828,
+            "p95": 2938158.4797,
+            "n": 60
+          },
+          "violations_mean": 10.9167,
+          "plans_with_zero_violations_pct": 0.0,
+          "solve_time_s_mean": 0.318,
+          "solve_time_s_max": 0.7168
+        }
+      },
+      "replan_vs_stale_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Stale plan (no replan)",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 167595.5826,
+        "ci95_low": 83534.3579,
+        "ci95_high": 251656.8073,
+        "median_diff": 150392.9001,
+        "win_rate_pct": 63.3333,
+        "relative_change_pct": 7.6006
+      },
+      "planner_vs_fifo_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 1885984.1608,
+        "ci95_low": 1768654.5801,
+        "ci95_high": 2003313.7414,
+        "median_diff": 1945512.2483,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": 387.5479
+      }
+    },
+    "new_order": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "spoilage_pct": {
+            "mean": 34.2013,
+            "median": 34.9903,
+            "p5": 24.9767,
+            "p95": 43.3132,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 52.5219,
+            "median": 52.167,
+            "p5": 44.7783,
+            "p95": 61.3495,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 1095318.5244,
+            "median": 1072730.7124,
+            "p5": 232828.7156,
+            "p95": 2004749.6543,
+            "n": 60
+          },
+          "violations_mean": 16.6667,
+          "plans_with_zero_violations_pct": 0.0,
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "spoilage_pct": {
+            "mean": 5.3299,
+            "median": 4.3904,
+            "p5": 2.5887,
+            "p95": 10.1778,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 62.7767,
+            "median": 62.9818,
+            "p5": 54.9034,
+            "p95": 71.3914,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2730649.1855,
+            "median": 2754752.9527,
+            "p5": 2274770.5307,
+            "p95": 3229714.2909,
+            "n": 60
+          },
+          "violations_mean": 0.0,
+          "plans_with_zero_violations_pct": 100.0,
+          "solve_time_s_mean": 0.3085,
+          "solve_time_s_max": 0.5466
+        },
+        "Stale plan (no replan)": {
+          "spoilage_pct": {
+            "mean": 5.2047,
+            "median": 4.3024,
+            "p5": 2.5887,
+            "p95": 10.0682,
+            "n": 60
+          },
+          "fulfillment_pct": {
+            "mean": 62.4115,
+            "median": 62.9102,
+            "p5": 54.9034,
+            "p95": 71.0966,
+            "n": 60
+          },
+          "net_revenue": {
+            "mean": 2716094.5834,
+            "median": 2754864.16,
+            "p5": 2249944.1968,
+            "p95": 3189437.6049,
+            "n": 60
+          },
+          "violations_mean": 0.0,
+          "plans_with_zero_violations_pct": 100.0,
+          "solve_time_s_mean": 0.2922,
+          "solve_time_s_max": 0.8343
+        }
+      },
+      "replan_vs_stale_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Stale plan (no replan)",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 14554.6021,
+        "ci95_low": 5127.6962,
+        "ci95_high": 23981.5079,
+        "median_diff": 0.901,
+        "win_rate_pct": 51.6667,
+        "relative_change_pct": 0.5359
+      },
+      "planner_vs_fifo_net_revenue": {
+        "method": "FreshRoute planner",
+        "baseline": "Baseline A: FIFO",
+        "metric": "net_revenue",
+        "n": 60,
+        "mean_diff": 1635330.6611,
+        "ci95_low": 1526233.4538,
+        "ci95_high": 1744427.8684,
+        "median_diff": 1625451.8785,
+        "win_rate_pct": 100.0,
+        "relative_change_pct": 149.3018
+      }
+    }
+  },
+  "sensitivity": [
+    {
+      "factor": "delay_probability",
+      "level": 0.0,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1185748.7207,
+      "spoilage_pct": 32.7375,
+      "fulfillment_pct": 54.4533
+    },
+    {
+      "factor": "delay_probability",
+      "level": 0.0,
+      "method": "FreshRoute planner",
+      "net_revenue": 2722821.1856,
+      "spoilage_pct": 4.4605,
+      "fulfillment_pct": 63.3707
+    },
+    {
+      "factor": "delay_probability",
+      "level": 0.1,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "delay_probability",
+      "level": 0.1,
+      "method": "FreshRoute planner",
+      "net_revenue": 2647771.8451,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "delay_probability",
+      "level": 0.25,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 972639.3316,
+      "spoilage_pct": 34.3887,
+      "fulfillment_pct": 50.0012
+    },
+    {
+      "factor": "delay_probability",
+      "level": 0.25,
+      "method": "FreshRoute planner",
+      "net_revenue": 2517666.6935,
+      "spoilage_pct": 5.9114,
+      "fulfillment_pct": 58.9274
+    },
+    {
+      "factor": "delay_probability",
+      "level": 0.4,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 846330.0622,
+      "spoilage_pct": 35.4794,
+      "fulfillment_pct": 47.6021
+    },
+    {
+      "factor": "delay_probability",
+      "level": 0.4,
+      "method": "FreshRoute planner",
+      "net_revenue": 2420971.6612,
+      "spoilage_pct": 6.6172,
+      "fulfillment_pct": 56.8261
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.05,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1124869.8096,
+      "spoilage_pct": 33.4507,
+      "fulfillment_pct": 53.9964
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.05,
+      "method": "FreshRoute planner",
+      "net_revenue": 2704938.4826,
+      "spoilage_pct": 4.7285,
+      "fulfillment_pct": 63.4647
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.15,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.15,
+      "method": "FreshRoute planner",
+      "net_revenue": 2647771.8451,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.3,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1014645.9591,
+      "spoilage_pct": 33.8803,
+      "fulfillment_pct": 49.8412
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.3,
+      "method": "FreshRoute planner",
+      "net_revenue": 2546632.0858,
+      "spoilage_pct": 5.5645,
+      "fulfillment_pct": 58.4892
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.45,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 933095.0022,
+      "spoilage_pct": 34.2194,
+      "fulfillment_pct": 47.1173
+    },
+    {
+      "factor": "demand_error",
+      "level": 0.45,
+      "method": "FreshRoute planner",
+      "net_revenue": 2432748.9965,
+      "spoilage_pct": 6.2367,
+      "fulfillment_pct": 55.2031
+    },
+    {
+      "factor": "price_error",
+      "level": 0.04,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1088362.2889,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "price_error",
+      "level": 0.04,
+      "method": "FreshRoute planner",
+      "net_revenue": 2654819.0984,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "price_error",
+      "level": 0.08,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "price_error",
+      "level": 0.08,
+      "method": "FreshRoute planner",
+      "net_revenue": 2647771.8451,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "price_error",
+      "level": 0.16,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1075783.1518,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "price_error",
+      "level": 0.16,
+      "method": "FreshRoute planner",
+      "net_revenue": 2633109.2569,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "price_error",
+      "level": 0.24,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1066400.7794,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "price_error",
+      "level": 0.24,
+      "method": "FreshRoute planner",
+      "net_revenue": 2617621.1296,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.02,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.02,
+      "method": "FreshRoute planner",
+      "net_revenue": 1428093.6308,
+      "spoilage_pct": 1.1066,
+      "fulfillment_pct": 14.683
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.05,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.05,
+      "method": "FreshRoute planner",
+      "net_revenue": 2451860.5023,
+      "spoilage_pct": 3.2485,
+      "fulfillment_pct": 55.3255
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.1,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.1,
+      "method": "FreshRoute planner",
+      "net_revenue": 2611795.3378,
+      "spoilage_pct": 4.2471,
+      "fulfillment_pct": 60.0319
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.15,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.15,
+      "method": "FreshRoute planner",
+      "net_revenue": 2647771.8451,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.2,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.2,
+      "method": "FreshRoute planner",
+      "net_revenue": 2646615.0354,
+      "spoilage_pct": 5.6433,
+      "fulfillment_pct": 62.4722
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.3,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "risk_alpha",
+      "level": 0.3,
+      "method": "FreshRoute planner",
+      "net_revenue": 2645972.062,
+      "spoilage_pct": 6.0329,
+      "fulfillment_pct": 62.8839
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 0.5,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1196442.1659,
+      "spoilage_pct": 32.1899,
+      "fulfillment_pct": 53.6141
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 0.5,
+      "method": "FreshRoute planner",
+      "net_revenue": 2757467.1368,
+      "spoilage_pct": 3.5525,
+      "fulfillment_pct": 62.7441
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 1.0,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 1084345.0687,
+      "spoilage_pct": 33.6104,
+      "fulfillment_pct": 52.4131
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 1.0,
+      "method": "FreshRoute planner",
+      "net_revenue": 2647771.8451,
+      "spoilage_pct": 5.0071,
+      "fulfillment_pct": 61.5858
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 1.5,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 933058.8517,
+      "spoilage_pct": 35.7304,
+      "fulfillment_pct": 51.0432
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 1.5,
+      "method": "FreshRoute planner",
+      "net_revenue": 2393897.4918,
+      "spoilage_pct": 8.3825,
+      "fulfillment_pct": 59.1477
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 2.0,
+      "method": "Baseline A: FIFO",
+      "net_revenue": 738917.6249,
+      "spoilage_pct": 38.8101,
+      "fulfillment_pct": 48.8926
+    },
+    {
+      "factor": "shelf_life_error",
+      "level": 2.0,
+      "method": "FreshRoute planner",
+      "net_revenue": 2088009.6892,
+      "spoilage_pct": 12.4925,
+      "fulfillment_pct": 56.022
+    }
+  ],
+  "base_plan": {
+    "status": "Optimal",
+    "solve_time_s": 0.141,
+    "violations": 0,
+    "expected_net_inr": 2667041.8,
+    "kg_by_action": {
+      "DISCOUNT": 22611.3,
+      "DIVERT": 30388.7,
+      "HOLD": 2850.0,
+      "SHIP": 82450.0
+    }
+  },
+  "roi_estimate": {
+    "planner_minus_fifo_net_inr_per_cycle_mean": 1598290.8,
+    "ci95": [
+      1556806.2,
+      1639775.4
+    ],
+    "dispatch_cycles_per_month": 26.0,
+    "inr_per_month_mean": 41555560.0,
+    "inr_per_month_ci95": [
+      40476961.0,
+      42634160.0
+    ],
+    "stock_per_cycle_tonnes": 138.3,
+    "assumptions": "Held-out mean paired difference vs FIFO per dispatch cycle x cycles per month; same cost model, same stock volume; synthetic data, so this is illustrative only."
+  }
+}

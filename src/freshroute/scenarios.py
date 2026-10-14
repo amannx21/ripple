@@ -48,7 +48,14 @@ def apply_scenario(base: Instance, scen: Scenario) -> Instance:
             "quantity_kg": max(100.0, round(b.quantity_kg * qm, -1)),
         }))
     inst.batches = batches
-    inst.temp_forecast = build_forecasts(inst)
+    # add the scenario's temperature offsets on top of whatever forecast the base carries
+    # (synthetic diurnal model offline, Open-Meteo along-route series in live mode)
+    if not base.temp_forecast:
+        base_fc = build_forecasts(base)
+    else:
+        base_fc = base.temp_forecast
+    inst.temp_forecast = {lid: np.asarray(base_fc[lid]) + scen.temp_offset_c + scen.lane_temp_offset_c.get(lid, 0.0)
+                          for lid in inst.lanes}
     return inst
 
 

@@ -193,7 +193,8 @@ def simulate(inst: Instance, plan, world: World) -> dict:
     net = revenue + salvage_rev + carry_val - transport - handling - holding - spoilage_cost - penalty
     return {
         "total_kg": total_kg, "shipped_kg": shipped_kg, "sold_kg": sold_kg, "spoiled_kg": spoiled_kg,
-        "spoilage_pct": 100.0 * spoiled_kg / total_kg, "diverted_kg": diverted_kg, "carried_kg": carried_kg,
+        "spoilage_pct": 100.0 * spoiled_kg / total_kg, "diverted_kg": diverted_kg,
+        "spoiled_or_diverted_pct": 100.0 * (spoiled_kg + diverted_kg) / total_kg, "carried_kg": carried_kg,
         "distress_kg": distress_kg, **{f"spoiled_{k}_kg": v for k, v in spoiled.items()},
         "demand_kg": total_demand, "fulfilled_kg": total_ful,
         "fulfillment_pct": 100.0 * total_ful / total_demand if total_demand else float("nan"),

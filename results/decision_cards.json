@@ -1,0 +1,348 @@
+[
+  {
+    "batch_id": "B01",
+    "commodity": "tomato",
+    "recommendation": "SHIP 4,600 kg to MUM",
+    "reasons": [
+      "Ship 4,600 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 4.8 d (5th pct 3.0 d) vs 2.0 d needed at ~27 C transit. Expected net Rs 20.5/kg vs divert Rs 3.6/kg."
+    ],
+    "alternative": "not sending it to MUM",
+    "alternative_plan": "SHIP 1,715 kg to PUN; SHIP 2,885 kg to SUR",
+    "delta_expected_net_inr": -119.6426,
+    "sar_shipped_now": 0.004,
+    "sar_shipped_alternative": 0.0026
+  },
+  {
+    "batch_id": "B02",
+    "commodity": "tomato",
+    "recommendation": "SHIP 2,346 kg to MUM; SHIP 1,969 kg to PUN; SHIP 2,885 kg to SUR",
+    "reasons": [
+      "Ship 2,346 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 4.5 d (5th pct 3.0 d) vs 2.0 d needed at ~27 C transit. Expected net Rs 20.4/kg vs divert Rs 3.6/kg.",
+      "Ship 1,969 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 4.5 d (5th pct 3.0 d) vs 2.0 d needed at ~25 C transit. Expected net Rs 17.9/kg vs divert Rs 3.6/kg.",
+      "Ship 2,885 kg to Surat (APMC): P(arrives sellable and on time) 97% meets the 85% limit; median arrival life 4.3 d (5th pct 2.8 d) vs 2.0 d needed at ~27 C transit. Expected net Rs 17.9/kg vs divert Rs 3.6/kg."
+    ],
+    "alternative": "not sending it to SUR",
+    "alternative_plan": "SHIP 5,231 kg to MUM; SHIP 1,969 kg to PUN",
+    "delta_expected_net_inr": -21.6891,
+    "sar_shipped_now": 0.0055,
+    "sar_shipped_alternative": 0.0055
+  },
+  {
+    "batch_id": "B03",
+    "commodity": "tomato",
+    "recommendation": "SHIP 1,371 kg to HYD; SHIP 4,929 kg to MUM",
+    "reasons": [
+      "Ship 1,371 kg to Hyderabad (Bowenpally): P(arrives sellable and on time) 99% meets the 85% limit; median arrival life 4.8 d (5th pct 2.8 d) vs 2.0 d needed at ~27 C transit. Expected net Rs 15.3/kg vs divert Rs 3.6/kg.",
+      "Ship 4,929 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 5.8 d (5th pct 3.8 d) vs 2.0 d needed at ~27 C transit. Expected net Rs 20.6/kg vs divert Rs 3.6/kg."
+    ],
+    "alternative": "not sending it to MUM",
+    "alternative_plan": "SHIP 1,446 kg to HYD; SHIP 1,969 kg to PUN; SHIP 2,885 kg to SUR",
+    "delta_expected_net_inr": -785.8841,
+    "sar_shipped_now": 0.0028,
+    "sar_shipped_alternative": 0.0051
+  },
+  {
+    "batch_id": "B04",
+    "commodity": "tomato",
+    "recommendation": "DIVERT 6,700 kg",
+    "reasons": [
+      "Divert 6,700 kg to processing/salvage: no destination meets the risk limit: best is MUM with P(sellable and on time) 21% < required 85% (median arrival life 1.6 d vs 2.0 d needed); holding is too risky (P(still sellable next cycle) 2%). Salvage recovers Rs 3.6/kg instead of a Rs 12.0/kg spoilage loss."
+    ],
+    "alternative": "not diverting it",
+    "alternative_plan": "no alternative passes the constraints when not diverting it: every other action breaks the 85% risk limit or a capacity/demand limit (solver status Infeasible)",
+    "delta_expected_net_inr": null,
+    "sar_shipped_now": null,
+    "sar_shipped_alternative": null
+  },
+  {
+    "batch_id": "B05",
+    "commodity": "onion",
+    "recommendation": "SHIP 1,423 kg to MUM; SHIP 5,277 kg to PUN",
+    "reasons": [
+      "Ship 1,423 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 28.9 d (5th pct 22.2 d) vs 7.0 d needed at ~27 C transit. Expected net Rs 28.9/kg vs divert Rs 4.8/kg.",
+      "Ship 5,277 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 28.8 d (5th pct 22.0 d) vs 7.0 d needed at ~25 C transit. Expected net Rs 24.3/kg vs divert Rs 4.8/kg."
+    ],
+    "alternative": "not sending it to PUN",
+    "alternative_plan": "SHIP 3,753 kg to MUM; SHIP 2,947 kg to SUR",
+    "delta_expected_net_inr": 0.0,
+    "sar_shipped_now": 0.0,
+    "sar_shipped_alternative": 0.0
+  },
+  {
+    "batch_id": "B06",
+    "commodity": "onion",
+    "recommendation": "SHIP 5,900 kg to SUR",
+    "reasons": [
+      "Ship 5,900 kg to Surat (APMC): P(arrives sellable and on time) 97% meets the 85% limit; median arrival life 48.0 d (5th pct 37.5 d) vs 7.0 d needed at ~27 C transit. Expected net Rs 24.4/kg vs divert Rs 4.8/kg."
+    ],
+    "alternative": "not sending it to SUR",
+    "alternative_plan": "SHIP 5,900 kg to PUN",
+    "delta_expected_net_inr": 0.0,
+    "sar_shipped_now": 0.0,
+    "sar_shipped_alternative": 0.0
+  },
+  {
+    "batch_id": "B07",
+    "commodity": "onion",
+    "recommendation": "SHIP 1,092 kg to HYD; SHIP 2,567 kg to MUM; SHIP 795 kg to PUN; SHIP 2,947 kg to SUR",
+    "reasons": [
+      "Ship 1,092 kg to Hyderabad (Bowenpally): P(arrives sellable and on time) 100% meets the 85% limit; median arrival life 22.3 d (5th pct 17.2 d) vs 7.0 d needed at ~27 C transit. Expected net Rs 20.2/kg vs divert Rs 4.8/kg.",
+      "Ship 2,567 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 22.7 d (5th pct 17.6 d) vs 7.0 d needed at ~27 C transit. Expected net Rs 28.9/kg vs divert Rs 4.8/kg.",
+      "Ship 795 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 22.7 d (5th pct 17.5 d) vs 7.0 d needed at ~25 C transit. Expected net Rs 24.3/kg vs divert Rs 4.8/kg.",
+      "Ship 2,947 kg to Surat (APMC): P(arrives sellable and on time) 97% meets the 85% limit; median arrival life 22.6 d (5th pct 17.5 d) vs 7.0 d needed at ~27 C transit. Expected net Rs 24.4/kg vs divert Rs 4.8/kg."
+    ],
+    "alternative": "not sending it to SUR",
+    "alternative_plan": "SHIP 1,092 kg to HYD; SHIP 3,990 kg to MUM; SHIP 2,318 kg to PUN",
+    "delta_expected_net_inr": 0.0,
+    "sar_shipped_now": 0.0,
+    "sar_shipped_alternative": 0.0
+  },
+  {
+    "batch_id": "B08",
+    "commodity": "guava",
+    "recommendation": "SHIP 698 kg to MUM; SHIP 592 kg to PUN; SHIP 1,010 kg to SUR",
+    "reasons": [
+      "Ship 698 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 3.4 d (5th pct 2.0 d) vs 1.5 d needed at ~27 C transit. Expected net Rs 44.3/kg vs divert Rs 8.4/kg.",
+      "Ship 592 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 3.4 d (5th pct 2.1 d) vs 1.5 d needed at ~25 C transit. Expected net Rs 41.7/kg vs divert Rs 8.4/kg.",
+      "Ship 1,010 kg to Surat (APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 3.2 d (5th pct 1.9 d) vs 1.5 d needed at ~27 C transit. Expected net Rs 43.6/kg vs divert Rs 8.4/kg."
+    ],
+    "alternative": "not sending it to SUR",
+    "alternative_plan": "SHIP 698 kg to MUM; SHIP 1,602 kg to PUN",
+    "delta_expected_net_inr": -361.9846,
+    "sar_shipped_now": 0.0099,
+    "sar_shipped_alternative": 0.009
+  },
+  {
+    "batch_id": "B09",
+    "commodity": "guava",
+    "recommendation": "SHIP 2,400 kg to PUN",
+    "reasons": [
+      "Ship 2,400 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 95% meets the 85% limit; median arrival life 3.1 d (5th pct 1.8 d) vs 1.5 d needed at ~25 C transit. Expected net Rs 41.2/kg vs divert Rs 8.4/kg."
+    ],
+    "alternative": "not sending it to PUN",
+    "alternative_plan": "DISCOUNT 692 kg to HYD at 20% off; SHIP 698 kg to MUM; SHIP 1,010 kg to SUR",
+    "delta_expected_net_inr": -4397.9922,
+    "sar_shipped_now": 0.018,
+    "sar_shipped_alternative": 0.0808
+  },
+  {
+    "batch_id": "B10",
+    "commodity": "guava",
+    "recommendation": "HOLD 2,850 kg; SHIP 3,125 kg to HYD; SHIP 1,925 kg to PUN",
+    "reasons": [
+      "Hold 2,850 kg at the hub: the feasible destinations' demand or truck capacity is already used by batches that earn more there. P(still sellable next cycle) 94% (median life after 1 day 3.4 d), so keeping it is worth more than diverting at Rs 8.4/kg.",
+      "Ship 3,125 kg to Hyderabad (Bowenpally): P(arrives sellable and on time) 89% meets the 85% limit; median arrival life 2.8 d (5th pct 1.2 d) vs 1.5 d needed at ~27 C transit. Expected net Rs 32.7/kg vs divert Rs 8.4/kg.",
+      "Ship 1,925 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 3.6 d (5th pct 2.2 d) vs 1.5 d needed at ~25 C transit. Expected net Rs 41.9/kg vs divert Rs 8.4/kg."
+    ],
+    "alternative": "not sending it to HYD",
+    "alternative_plan": "HOLD 2,212 kg; SHIP 4,677 kg to PUN; SHIP 1,010 kg to SUR",
+    "delta_expected_net_inr": -12962.434,
+    "sar_shipped_now": 0.0702,
+    "sar_shipped_alternative": 0.0058
+  },
+  {
+    "batch_id": "B11",
+    "commodity": "cabbage",
+    "recommendation": "DISCOUNT 5,000 kg to PUN at 30% off",
+    "reasons": [
+      "Discount 5,000 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 92% meets the 85% limit; median arrival life 3.0 d (5th pct 2.0 d) vs 2.1 d needed at ~25 C transit. Expected net Rs 6.6/kg vs divert Rs 2.4/kg. A 30% markdown lifts demand ~45% (elasticity assumption) and lowers the life needed to sell from 3.0 d to 2.1 d."
+    ],
+    "alternative": "not sending it to PUN",
+    "alternative_plan": "DISCOUNT 2,747 kg to MUM at 30% off; DISCOUNT 2,253 kg to SUR at 30% off",
+    "delta_expected_net_inr": -3141.7113,
+    "sar_shipped_now": 0.474,
+    "sar_shipped_alternative": 0.5083
+  },
+  {
+    "batch_id": "B12",
+    "commodity": "cabbage",
+    "recommendation": "DIVERT 2,200 kg",
+    "reasons": [
+      "Divert 2,200 kg to processing/salvage: no destination meets the risk limit: best is MUM with P(sellable and on time) 34% < required 85% (median arrival life 2.7 d vs 3.0 d needed); holding is too risky (P(still sellable next cycle) 8%). Salvage recovers Rs 2.4/kg instead of a Rs 8.0/kg spoilage loss."
+    ],
+    "alternative": "not diverting it",
+    "alternative_plan": "no alternative passes the constraints when not diverting it: every other action breaks the 85% risk limit or a capacity/demand limit (solver status Infeasible)",
+    "delta_expected_net_inr": null,
+    "sar_shipped_now": null,
+    "sar_shipped_alternative": null
+  },
+  {
+    "batch_id": "B13",
+    "commodity": "cabbage",
+    "recommendation": "SHIP 1,437 kg to MUM; SHIP 43 kg to PUN; SHIP 3,020 kg to SUR",
+    "reasons": [
+      "Ship 1,437 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 6.9 d (5th pct 4.8 d) vs 3.0 d needed at ~27 C transit. Expected net Rs 11.8/kg vs divert Rs 2.4/kg.",
+      "Ship 43 kg to Pune (Gultekdi market yard): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 7.0 d (5th pct 4.8 d) vs 3.0 d needed at ~25 C transit. Expected net Rs 11.6/kg vs divert Rs 2.4/kg.",
+      "Ship 3,020 kg to Surat (APMC): P(arrives sellable and on time) 97% meets the 85% limit; median arrival life 6.8 d (5th pct 4.7 d) vs 3.0 d needed at ~27 C transit. Expected net Rs 11.0/kg vs divert Rs 2.4/kg."
+    ],
+    "alternative": "not sending it to SUR",
+    "alternative_plan": "SHIP 3,013 kg to HYD; SHIP 1,437 kg to MUM; SHIP 50 kg to PUN",
+    "delta_expected_net_inr": -1344.1788,
+    "sar_shipped_now": 0.001,
+    "sar_shipped_alternative": 0.005
+  },
+  {
+    "batch_id": "B14",
+    "commodity": "mango",
+    "recommendation": "DISCOUNT 3,900 kg to BLR at 20% off",
+    "reasons": [
+      "Discount 3,900 kg to Bengaluru (KR Market): P(arrives sellable and on time) 93% meets the 85% limit; median arrival life 3.5 d (5th pct 2.4 d) vs 2.4 d needed at ~26 C transit. Expected net Rs 45.8/kg vs divert Rs 13.5/kg. A 20% markdown lifts demand ~30% (elasticity assumption) and lowers the life needed to sell from 3.0 d to 2.4 d."
+    ],
+    "alternative": "not sending it to BLR",
+    "alternative_plan": "DISCOUNT 3,900 kg to CHE at 30% off",
+    "delta_expected_net_inr": -7536.8427,
+    "sar_shipped_now": 0.242,
+    "sar_shipped_alternative": 0.5
+  },
+  {
+    "batch_id": "B15",
+    "commodity": "mango",
+    "recommendation": "DIVERT 6,100 kg",
+    "reasons": [
+      "Divert 6,100 kg to processing/salvage: no destination meets the risk limit: best is BLR with P(sellable and on time) 18% < required 85% (median arrival life 2.5 d vs 3.0 d needed); holding is too risky (P(still sellable next cycle) 0%). Salvage recovers Rs 13.5/kg instead of a Rs 45.0/kg spoilage loss."
+    ],
+    "alternative": "not diverting it",
+    "alternative_plan": "no alternative passes the constraints when not diverting it: every other action breaks the 85% risk limit or a capacity/demand limit (solver status Infeasible)",
+    "delta_expected_net_inr": null,
+    "sar_shipped_now": null,
+    "sar_shipped_alternative": null
+  },
+  {
+    "batch_id": "B16",
+    "commodity": "mango",
+    "recommendation": "DIVERT 4,900 kg",
+    "reasons": [
+      "Divert 4,900 kg to processing/salvage: no destination meets the risk limit: best is BLR with P(sellable and on time) 31% < required 85% (median arrival life 2.7 d vs 3.0 d needed); holding is too risky (P(still sellable next cycle) 1%). Salvage recovers Rs 13.5/kg instead of a Rs 45.0/kg spoilage loss."
+    ],
+    "alternative": "not diverting it",
+    "alternative_plan": "no alternative passes the constraints when not diverting it: every other action breaks the 85% risk limit or a capacity/demand limit (solver status Infeasible)",
+    "delta_expected_net_inr": null,
+    "sar_shipped_now": null,
+    "sar_shipped_alternative": null
+  },
+  {
+    "batch_id": "B17",
+    "commodity": "mango",
+    "recommendation": "DISCOUNT 534 kg to BLR at 10% off; DISCOUNT 2,864 kg to CHE at 20% off; DISCOUNT 2,402 kg to MUM at 20% off",
+    "reasons": [
+      "Discount 534 kg to Bengaluru (KR Market): P(arrives sellable and on time) 93% meets the 85% limit; median arrival life 3.9 d (5th pct 2.7 d) vs 2.7 d needed at ~26 C transit. Expected net Rs 51.2/kg vs divert Rs 13.5/kg. A 10% markdown lifts demand ~15% (elasticity assumption) and lowers the life needed to sell from 3.0 d to 2.7 d.",
+      "Discount 2,864 kg to Chennai (Koyambedu): P(arrives sellable and on time) 89% meets the 85% limit; median arrival life 3.4 d (5th pct 2.1 d) vs 2.4 d needed at ~29 C transit. Expected net Rs 42.6/kg vs divert Rs 13.5/kg. A 20% markdown lifts demand ~30% (elasticity assumption) and lowers the life needed to sell from 3.0 d to 2.4 d.",
+      "Discount 2,402 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 93% meets the 85% limit; median arrival life 3.5 d (5th pct 2.3 d) vs 2.4 d needed at ~13 C transit. Expected net Rs 44.5/kg vs divert Rs 13.5/kg. A 20% markdown lifts demand ~30% (elasticity assumption) and lowers the life needed to sell from 3.0 d to 2.4 d."
+    ],
+    "alternative": "not sending it to CHE",
+    "alternative_plan": "DISCOUNT 3,398 kg to BLR at 10% off; DISCOUNT 2,402 kg to MUM at 20% off",
+    "delta_expected_net_inr": -6102.0591,
+    "sar_shipped_now": 0.2784,
+    "sar_shipped_alternative": 0.1766
+  },
+  {
+    "batch_id": "B18",
+    "commodity": "banana",
+    "recommendation": "DISCOUNT 2,511 kg to BLR at 30% off; DIVERT 3,689 kg",
+    "reasons": [
+      "Discount 2,511 kg to Bengaluru (KR Market): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 2.3 d (5th pct 1.5 d) vs 1.4 d needed at ~26 C transit. Expected net Rs 18.6/kg vs divert Rs 6.6/kg. A 30% markdown lifts demand ~45% (elasticity assumption) and lowers the life needed to sell from 2.0 d to 1.4 d.",
+      "Divert 3,689 kg to processing/salvage: the feasible destinations' demand or truck capacity is already used by batches that earn more there; holding is too risky (P(still sellable next cycle) 0%). Salvage recovers Rs 6.6/kg instead of a Rs 22.0/kg spoilage loss."
+    ],
+    "alternative": "not diverting it",
+    "alternative_plan": "DISCOUNT 2,511 kg to BLR at 30% off; DISCOUNT 3,689 kg to MUM at 30% off",
+    "delta_expected_net_inr": -5485.5651,
+    "sar_shipped_now": 0.3,
+    "sar_shipped_alternative": 0.463
+  },
+  {
+    "batch_id": "B19",
+    "commodity": "banana",
+    "recommendation": "SHIP 2,742 kg to CHE; SHIP 3,760 kg to HYD; SHIP 898 kg to MUM",
+    "reasons": [
+      "Ship 2,742 kg to Chennai (Koyambedu): P(arrives sellable and on time) 96% meets the 85% limit; median arrival life 3.8 d (5th pct 2.3 d) vs 2.0 d needed at ~29 C transit. Expected net Rs 29.9/kg vs divert Rs 6.6/kg.",
+      "Ship 3,760 kg to Hyderabad (Bowenpally): P(arrives sellable and on time) 92% meets the 85% limit; median arrival life 3.4 d (5th pct 1.8 d) vs 2.0 d needed at ~26 C transit. Expected net Rs 22.9/kg vs divert Rs 6.6/kg.",
+      "Ship 898 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 99% meets the 85% limit; median arrival life 4.0 d (5th pct 2.6 d) vs 2.0 d needed at ~13 C transit. Expected net Rs 26.0/kg vs divert Rs 6.6/kg."
+    ],
+    "alternative": "not sending it to HYD",
+    "alternative_plan": "SHIP 2,742 kg to CHE; SHIP 4,658 kg to MUM",
+    "delta_expected_net_inr": -6806.108,
+    "sar_shipped_now": 0.0484,
+    "sar_shipped_alternative": 0.0098
+  },
+  {
+    "batch_id": "B20",
+    "commodity": "banana",
+    "recommendation": "SHIP 3,700 kg to MUM",
+    "reasons": [
+      "Ship 3,700 kg to Mumbai (Vashi APMC): P(arrives sellable and on time) 98% meets the 85% limit; median arrival life 3.5 d (5th pct 2.3 d) vs 2.0 d needed at ~13 C transit. Expected net Rs 25.2/kg vs divert Rs 6.6/kg."
+    ],
+    "alternative": "not sending it to MUM",
+    "alternative_plan": "DISCOUNT 958 kg to HYD at 10% off; SHIP 2,742 kg to CHE",
+    "delta_expected_net_inr": -8534.3849,
+    "sar_shipped_now": 0.017,
+    "sar_shipped_alternative": 0.1008
+  },
+  {
+    "batch_id": "B21",
+    "commodity": "banana",
+    "recommendation": "DIVERT 6,800 kg",
+    "reasons": [
+      "Divert 6,800 kg to processing/salvage: no destination meets the risk limit: best is BLR with P(sellable and on time) 33% < required 85% (median arrival life 1.8 d vs 2.0 d needed); holding is too risky (P(still sellable next cycle) 0%). Salvage recovers Rs 6.6/kg instead of a Rs 22.0/kg spoilage loss."
+    ],
+    "alternative": "not diverting it",
+    "alternative_plan": "no alternative passes the constraints when not diverting it: every other action breaks the 85% risk limit or a capacity/demand limit (solver status Infeasible)",
+    "delta_expected_net_inr": null,
+    "sar_shipped_now": null,
+    "sar_shipped_alternative": null
+  },
+  {
+    "batch_id": "B22",
+    "commodity": "tomato",
+    "recommendation": "SHIP 1,248 kg to BLR; SHIP 5,552 kg to CHE",
+    "reasons": [
+      "Ship 1,248 kg to Bengaluru (KR Market): P(arrives sellable and on time) 98% meets the 85% limit; median arrival life 4.5 d (5th pct 2.9 d) vs 2.0 d needed at ~26 C transit. Expected net Rs 15.6/kg vs divert Rs 3.6/kg.",
+      "Ship 5,552 kg to Chennai (Koyambedu): P(arrives sellable and on time) 97% meets the 85% limit; median arrival life 3.9 d (5th pct 2.5 d) vs 2.0 d needed at ~29 C transit. Expected net Rs 17.9/kg vs divert Rs 3.6/kg."
+    ],
+    "alternative": "not sending it to CHE",
+    "alternative_plan": "SHIP 5,655 kg to BLR; SHIP 1,145 kg to HYD",
+    "delta_expected_net_inr": -10957.81,
+    "sar_shipped_now": 0.0079,
+    "sar_shipped_alternative": 0.0104
+  },
+  {
+    "batch_id": "B23",
+    "commodity": "tomato",
+    "recommendation": "SHIP 5,000 kg to CHE",
+    "reasons": [
+      "Ship 5,000 kg to Chennai (Koyambedu): P(arrives sellable and on time) 98% meets the 85% limit; median arrival life 4.4 d (5th pct 2.8 d) vs 2.0 d needed at ~29 C transit. Expected net Rs 17.9/kg vs divert Rs 3.6/kg."
+    ],
+    "alternative": "not sending it to CHE",
+    "alternative_plan": "SHIP 5,000 kg to BLR",
+    "delta_expected_net_inr": -5638.8321,
+    "sar_shipped_now": 0.01,
+    "sar_shipped_alternative": 0.0
+  },
+  {
+    "batch_id": "B24",
+    "commodity": "cabbage",
+    "recommendation": "DISCOUNT 5,400 kg to BLR at 30% off",
+    "reasons": [
+      "Discount 5,400 kg to Bengaluru (KR Market): P(arrives sellable and on time) 88% meets the 85% limit; median arrival life 2.8 d (5th pct 1.9 d) vs 2.1 d needed at ~26 C transit. Expected net Rs 4.8/kg vs divert Rs 2.4/kg. A 30% markdown lifts demand ~45% (elasticity assumption) and lowers the life needed to sell from 3.0 d to 2.1 d."
+    ],
+    "alternative": "not sending it to BLR",
+    "alternative_plan": "DIVERT 5,400 kg",
+    "delta_expected_net_inr": -10175.7151,
+    "sar_shipped_now": 0.619,
+    "sar_shipped_alternative": null
+  },
+  {
+    "batch_id": "B25",
+    "commodity": "cabbage",
+    "recommendation": "SHIP 118 kg to BLR; SHIP 1,842 kg to CHE; SHIP 5,240 kg to HYD",
+    "reasons": [
+      "Ship 118 kg to Bengaluru (KR Market): P(arrives sellable and on time) 98% meets the 85% limit; median arrival life 6.6 d (5th pct 4.6 d) vs 3.0 d needed at ~26 C transit. Expected net Rs 9.7/kg vs divert Rs 2.4/kg.",
+      "Ship 1,842 kg to Chennai (Koyambedu): P(arrives sellable and on time) 98% meets the 85% limit; median arrival life 6.1 d (5th pct 4.1 d) vs 3.0 d needed at ~29 C transit. Expected net Rs 12.3/kg vs divert Rs 2.4/kg.",
+      "Ship 5,240 kg to Hyderabad (Bowenpally): P(arrives sellable and on time) 99% meets the 85% limit; median arrival life 5.8 d (5th pct 3.8 d) vs 3.0 d needed at ~26 C transit. Expected net Rs 10.7/kg vs divert Rs 2.4/kg."
+    ],
+    "alternative": "not sending it to HYD",
+    "alternative_plan": "HOLD 1,516 kg; SHIP 3,842 kg to BLR; SHIP 1,842 kg to CHE",
+    "delta_expected_net_inr": -24096.713,
+    "sar_shipped_now": 0.0078,
+    "sar_shipped_alternative": 0.0016
+  }
+]

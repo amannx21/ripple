@@ -36,7 +36,9 @@ ALL_METHODS = [METHOD_PLANNER, METHOD_DET, METHOD_FIFO, METHOD_GREEDY]
 KEY_METRICS = ["spoilage_pct", "fulfillment_pct", "net_revenue", "net_revenue_excl_carry", "spoiled_kg",
                "sold_kg", "diverted_kg", "carried_kg", "unmet_kg", "min_dest_fill_pct", "dest_fill_std_pct",
                "revenue", "transport_cost", "handling_cost", "holding_cost", "spoilage_cost", "salvage_revenue",
-               "carry_value", "discount_given"]
+               "carry_value", "discount_given", "spoiled_or_diverted_pct", "distress_kg",
+               "spoiled_handling_loss_kg", "spoiled_arrived_unsellable_kg", "spoiled_unsold_at_destination_kg",
+               "spoiled_held_expired_kg"]
 
 _BASE: Instance | None = None
 
