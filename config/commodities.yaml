@@ -1,0 +1,68 @@
+# PLACEHOLDER ASSUMPTIONS for calibration, NOT measured constants.
+# Shelf-life values are rough defaults meant to be calibrated against published
+# shelf-life ranges (for example ranges reported in reviews of the Indian tomato
+# supply chain). They are not validated. See docs/ASSUMPTIONS.md.
+#
+# rate multiplier at temperature T:  q10 ** ((T - ref_temp_c) / 10)
+# chill-sensitive crops: below chill_threshold_c the rate is multiplied by chill_penalty
+commodities:
+  tomato:
+    base_shelf_life_days: 7.0
+    ref_temp_c: 20.0
+    q10: 2.5
+    chill_threshold_c: 12.5
+    chill_penalty: 1.6
+    min_sellable_life_days: 2.0
+    handling_loss_frac: 0.04
+    life_sigma: 0.22
+    purchase_price_per_kg: 12.0
+  mango:
+    base_shelf_life_days: 8.0
+    ref_temp_c: 20.0
+    q10: 2.4
+    chill_threshold_c: 12.0
+    chill_penalty: 1.5
+    min_sellable_life_days: 3.0
+    handling_loss_frac: 0.03
+    life_sigma: 0.20
+    purchase_price_per_kg: 45.0
+  banana:
+    base_shelf_life_days: 6.0
+    ref_temp_c: 20.0
+    q10: 2.8
+    chill_threshold_c: 13.0
+    chill_penalty: 1.8
+    min_sellable_life_days: 2.0
+    handling_loss_frac: 0.03
+    life_sigma: 0.20
+    purchase_price_per_kg: 22.0
+  guava:
+    base_shelf_life_days: 5.0
+    ref_temp_c: 20.0
+    q10: 2.5
+    chill_threshold_c: 8.0
+    chill_penalty: 1.4
+    min_sellable_life_days: 1.5
+    handling_loss_frac: 0.04
+    life_sigma: 0.25
+    purchase_price_per_kg: 28.0
+  onion:
+    base_shelf_life_days: 60.0
+    ref_temp_c: 25.0
+    q10: 1.6
+    chill_threshold_c: null
+    chill_penalty: 1.0
+    min_sellable_life_days: 7.0
+    handling_loss_frac: 0.02
+    life_sigma: 0.15
+    purchase_price_per_kg: 16.0
+  cabbage:
+    base_shelf_life_days: 10.0
+    ref_temp_c: 20.0
+    q10: 2.2
+    chill_threshold_c: null
+    chill_penalty: 1.0
+    min_sellable_life_days: 3.0
+    handling_loss_frac: 0.05
+    life_sigma: 0.20
+    purchase_price_per_kg: 8.0

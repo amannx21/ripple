@@ -1,0 +1,7 @@
+dest_id,name,lat,lon,receiving_capacity_kg,data_label
+MUM,Mumbai (Vashi APMC),19.0771,73.009,32000,SYNTHETIC
+PUN,Pune (Gultekdi market yard),18.49,73.864,22000,SYNTHETIC
+SUR,Surat (APMC),21.1702,72.8311,16000,SYNTHETIC
+HYD,Hyderabad (Bowenpally),17.47,78.48,22000,SYNTHETIC
+CHE,Chennai (Koyambedu),13.0694,80.1948,22000,SYNTHETIC
+BLR,Bengaluru (KR Market),12.964,77.577,26000,SYNTHETIC

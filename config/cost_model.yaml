@@ -1,0 +1,32 @@
+# ============================================================================
+# REPLACE WITH ORGANIZER COST MODEL IF PROVIDED
+# If the organizers publish a cost model, put it at data/organizer/cost_model.yaml
+# (same keys) and it overrides every value below automatically.
+# All values are PLACEHOLDER ASSUMPTIONS in INR, not measured constants.
+# ============================================================================
+currency: INR
+
+transport:
+  per_kg_km: 0.004             # INR per kg per km (approx. 4 INR per tonne-km, assumption)
+  per_truck_fixed: 2500        # INR per truck dispatched (loading, tolls, driver bata; assumption)
+  reefer_multiplier: 1.6       # refrigerated lanes cost this multiple of the per-kg-km rate
+
+handling_cost_per_kg: 0.8      # INR per kg shipped (loading, unloading, crates; assumption)
+holding_cost_per_kg_day: 0.3   # INR per kg per day held at the hub (assumption)
+
+discount:
+  levels: [0.0, 0.10, 0.20, 0.30]  # allowed markdowns on the destination price
+  elasticity: 1.5                  # demand uplift = 1 + elasticity * discount (linear, assumption)
+  sell_speedup: 1.0                # required sellable life shrinks by (1 - sell_speedup * discount)
+
+spoilage:
+  cost_basis: purchase_value       # each spoiled kg costs its purchase value per kg
+
+salvage:
+  value_fraction_of_purchase: 0.30 # divert (processing / animal feed) recovers this share of purchase value
+
+carry_over:
+  value_fraction_of_purchase: 0.80 # held stock that is still sellable next cycle is valued at this share
+
+unmet_demand_penalty_per_kg: 0.0   # 0 unless the organizer cost model defines one
+late_delivery: distress_sale       # late arrivals are rejected and sold at salvage value

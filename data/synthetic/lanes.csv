@@ -1,0 +1,9 @@
+lane_id,origin,dest_id,distance_km,base_travel_hours,truck_capacity_kg,max_trucks,reefer,reefer_temp_c,window_end_hours,ambient_mean_c,ambient_amp_c,data_label
+NSK-MUM,NSK,MUM,167,4.5,9000,3,False,,10.0,28.0,5.0,SYNTHETIC
+NSK-PUN,NSK,PUN,210,5.5,9000,2,False,,10.0,27.0,6.0,SYNTHETIC
+NSK-SUR,NSK,SUR,245,6.0,9000,2,False,,12.0,29.0,5.0,SYNTHETIC
+NSK-HYD,NSK,HYD,620,13.0,9000,2,False,,34.0,30.0,6.0,SYNTHETIC
+KLR-BLR,KLR,BLR,70,2.0,9000,3,False,,10.0,26.0,5.0,SYNTHETIC
+KLR-CHE,KLR,CHE,255,6.0,9000,2,False,,12.0,31.0,4.0,SYNTHETIC
+KLR-HYD,KLR,HYD,570,11.5,9000,2,False,,34.0,30.0,6.0,SYNTHETIC
+KLR-MUM,KLR,MUM,990,20.0,7000,1,True,13.0,34.0,29.0,5.0,SYNTHETIC

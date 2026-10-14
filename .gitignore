@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.streamlit/secrets.toml
+results/runs/
+data/cache/live/
+*.egg-info/
+.DS_Store

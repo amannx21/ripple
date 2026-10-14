@@ -1,0 +1,34 @@
+# FreshRoute run settings. All randomness is seeded from these values.
+random_seed: 42
+monte_carlo_samples: 1000        # >= 500 per (batch, destination) pair, vectorized
+risk_alpha: 0.10                 # default risk limit; feasible if P(arrival life >= required) >= 1 - alpha
+discount_levels: [0.0, 0.10, 0.20, 0.30]
+
+planning:
+  departure_hour: 20             # local hour trucks leave the hub (night dispatch is common for mandi arrival)
+  hold_days: 1                   # one planning cycle; held stock is re-planned next cycle
+  handling_hours: 3              # loading + unloading hours spent at ambient temperature (assumption)
+  max_horizon_hours: 96          # temperature profile length used by the Monte Carlo
+
+uncertainty:                     # PLACEHOLDER ASSUMPTIONS, see docs/ASSUMPTIONS.md
+  life_sigma_scale: 1.0          # multiplies each commodity's lognormal sigma on remaining life
+  travel_sigma: 0.12             # lognormal sigma on travel time
+  delay_prob: 0.10               # probability a truck suffers an extra delay
+  delay_hours_mean: 5.0          # mean of the exponential delay (hours)
+  temp_sigma0: 1.0               # forecast error (deg C) at hour 0
+  temp_sigma_per_day: 1.5        # forecast error growth per day of horizon
+  demand_cv: 0.15                # coefficient of variation on realized demand
+  price_cv: 0.08                 # coefficient of variation on realized price
+
+scenarios:
+  tuning_seeds: [0, 100]         # half-open range [start, end) used ONLY for tuning
+  heldout_seeds: [1000, 1500]    # half-open range, never used for tuning; headline numbers only
+  alpha_grid: [0.02, 0.05, 0.10, 0.15, 0.20, 0.30]
+
+live:
+  user_agent: "FreshRoute-hackathon-demo/0.1 (Wild Bugs hackathon prototype; light use, cached)"
+  min_seconds_between_requests: 1.1
+  cache_ttl_hours: 6
+  timeout_seconds: 8
+  open_meteo_url: "https://api.open-meteo.com/v1/forecast"
+  osrm_url: "https://router.project-osrm.org/route/v1/driving"

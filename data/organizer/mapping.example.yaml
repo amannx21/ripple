@@ -1,0 +1,33 @@
+# Copy to mapping.yaml and edit to match the organizer files.
+# Left side = FreshRoute field name, right side = organizer column name.
+files:
+  batches: inventory_batches.csv
+  destinations: destinations.csv
+  lanes: lanes.csv
+  prices: market_prices.csv
+  demand: destination_demand.csv
+columns:
+  batches:
+    batch_id: BatchID
+    commodity: Commodity
+    origin: Warehouse
+    quantity_kg: Quantity_kg
+    remaining_life_days: EstRemainingShelfLife_days
+  lanes:
+    lane_id: LaneID
+    origin: From
+    dest_id: To
+    distance_km: Distance_km
+    base_travel_hours: TravelTime_h
+    truck_capacity_kg: TruckCapacity_kg
+    max_trucks: TrucksAvailable
+    window_end_hours: DeliveryWindowEnd_h
+defaults:
+  lanes:
+    ambient_mean_c: 28
+    ambient_amp_c: 5
+  batches:
+    age_days: 0
+unit_scale:
+  batches:
+    quantity_kg: 1   # set to 1000 if quantities are in tonnes

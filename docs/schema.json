@@ -1,0 +1,562 @@
+{
+  "Commodity": {
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string"
+      },
+      "base_shelf_life_days": {
+        "description": "Shelf life at ref_temp_c from fresh (days)",
+        "exclusiveMinimum": 0,
+        "title": "Base Shelf Life Days",
+        "type": "number"
+      },
+      "ref_temp_c": {
+        "default": 20.0,
+        "title": "Ref Temp C",
+        "type": "number"
+      },
+      "q10": {
+        "description": "Rate multiplier per +10 deg C",
+        "minimum": 1.0,
+        "title": "Q10",
+        "type": "number"
+      },
+      "chill_threshold_c": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "description": "Chilling-injury threshold; None if not chill sensitive",
+        "title": "Chill Threshold C"
+      },
+      "chill_penalty": {
+        "default": 1.0,
+        "minimum": 1.0,
+        "title": "Chill Penalty",
+        "type": "number"
+      },
+      "min_sellable_life_days": {
+        "minimum": 0,
+        "title": "Min Sellable Life Days",
+        "type": "number"
+      },
+      "handling_loss_frac": {
+        "default": 0.0,
+        "exclusiveMaximum": 1,
+        "minimum": 0,
+        "title": "Handling Loss Frac",
+        "type": "number"
+      },
+      "life_sigma": {
+        "default": 0.2,
+        "description": "Lognormal sigma of the remaining-life estimate",
+        "minimum": 0,
+        "title": "Life Sigma",
+        "type": "number"
+      },
+      "purchase_price_per_kg": {
+        "minimum": 0,
+        "title": "Purchase Price Per Kg",
+        "type": "number"
+      }
+    },
+    "required": [
+      "name",
+      "base_shelf_life_days",
+      "q10",
+      "min_sellable_life_days",
+      "purchase_price_per_kg"
+    ],
+    "title": "Commodity",
+    "type": "object"
+  },
+  "Hub": {
+    "properties": {
+      "hub_id": {
+        "title": "Hub Id",
+        "type": "string"
+      },
+      "name": {
+        "title": "Name",
+        "type": "string"
+      },
+      "lat": {
+        "title": "Lat",
+        "type": "number"
+      },
+      "lon": {
+        "title": "Lon",
+        "type": "number"
+      },
+      "storage_temp_c": {
+        "default": 25.0,
+        "description": "Temperature at which held stock is stored",
+        "title": "Storage Temp C",
+        "type": "number"
+      }
+    },
+    "required": [
+      "hub_id",
+      "name",
+      "lat",
+      "lon"
+    ],
+    "title": "Hub",
+    "type": "object"
+  },
+  "Batch": {
+    "properties": {
+      "batch_id": {
+        "title": "Batch Id",
+        "type": "string"
+      },
+      "commodity": {
+        "title": "Commodity",
+        "type": "string"
+      },
+      "origin": {
+        "title": "Origin",
+        "type": "string"
+      },
+      "quantity_kg": {
+        "exclusiveMinimum": 0,
+        "title": "Quantity Kg",
+        "type": "number"
+      },
+      "remaining_life_days": {
+        "description": "Estimated remaining shelf life at ref temperature",
+        "minimum": 0,
+        "title": "Remaining Life Days",
+        "type": "number"
+      },
+      "age_days": {
+        "default": 0.0,
+        "description": "Days since receipt at hub (used by FIFO)",
+        "minimum": 0,
+        "title": "Age Days",
+        "type": "number"
+      }
+    },
+    "required": [
+      "batch_id",
+      "commodity",
+      "origin",
+      "quantity_kg",
+      "remaining_life_days"
+    ],
+    "title": "Batch",
+    "type": "object"
+  },
+  "Destination": {
+    "properties": {
+      "dest_id": {
+        "title": "Dest Id",
+        "type": "string"
+      },
+      "name": {
+        "title": "Name",
+        "type": "string"
+      },
+      "lat": {
+        "title": "Lat",
+        "type": "number"
+      },
+      "lon": {
+        "title": "Lon",
+        "type": "number"
+      },
+      "receiving_capacity_kg": {
+        "exclusiveMinimum": 0,
+        "title": "Receiving Capacity Kg",
+        "type": "number"
+      }
+    },
+    "required": [
+      "dest_id",
+      "name",
+      "lat",
+      "lon",
+      "receiving_capacity_kg"
+    ],
+    "title": "Destination",
+    "type": "object"
+  },
+  "Lane": {
+    "properties": {
+      "lane_id": {
+        "title": "Lane Id",
+        "type": "string"
+      },
+      "origin": {
+        "title": "Origin",
+        "type": "string"
+      },
+      "dest_id": {
+        "title": "Dest Id",
+        "type": "string"
+      },
+      "distance_km": {
+        "exclusiveMinimum": 0,
+        "title": "Distance Km",
+        "type": "number"
+      },
+      "base_travel_hours": {
+        "exclusiveMinimum": 0,
+        "title": "Base Travel Hours",
+        "type": "number"
+      },
+      "truck_capacity_kg": {
+        "exclusiveMinimum": 0,
+        "title": "Truck Capacity Kg",
+        "type": "number"
+      },
+      "max_trucks": {
+        "minimum": 0,
+        "title": "Max Trucks",
+        "type": "integer"
+      },
+      "reefer": {
+        "default": false,
+        "title": "Reefer",
+        "type": "boolean"
+      },
+      "reefer_temp_c": {
+        "anyOf": [
+          {
+            "type": "number"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Reefer Temp C"
+      },
+      "window_end_hours": {
+        "description": "Latest acceptable arrival, hours after departure",
+        "exclusiveMinimum": 0,
+        "title": "Window End Hours",
+        "type": "number"
+      },
+      "ambient_mean_c": {
+        "default": 28.0,
+        "title": "Ambient Mean C",
+        "type": "number"
+      },
+      "ambient_amp_c": {
+        "default": 5.0,
+        "title": "Ambient Amp C",
+        "type": "number"
+      }
+    },
+    "required": [
+      "lane_id",
+      "origin",
+      "dest_id",
+      "distance_km",
+      "base_travel_hours",
+      "truck_capacity_kg",
+      "max_trucks",
+      "window_end_hours"
+    ],
+    "title": "Lane",
+    "type": "object"
+  },
+  "PriceRow": {
+    "properties": {
+      "dest_id": {
+        "title": "Dest Id",
+        "type": "string"
+      },
+      "commodity": {
+        "title": "Commodity",
+        "type": "string"
+      },
+      "price_per_kg": {
+        "minimum": 0,
+        "title": "Price Per Kg",
+        "type": "number"
+      }
+    },
+    "required": [
+      "dest_id",
+      "commodity",
+      "price_per_kg"
+    ],
+    "title": "PriceRow",
+    "type": "object"
+  },
+  "DemandRow": {
+    "properties": {
+      "dest_id": {
+        "title": "Dest Id",
+        "type": "string"
+      },
+      "commodity": {
+        "title": "Commodity",
+        "type": "string"
+      },
+      "demand_kg": {
+        "minimum": 0,
+        "title": "Demand Kg",
+        "type": "number"
+      }
+    },
+    "required": [
+      "dest_id",
+      "commodity",
+      "demand_kg"
+    ],
+    "title": "DemandRow",
+    "type": "object"
+  },
+  "CostModel": {
+    "$defs": {
+      "DiscountRule": {
+        "properties": {
+          "levels": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Levels",
+            "type": "array"
+          },
+          "elasticity": {
+            "minimum": 0,
+            "title": "Elasticity",
+            "type": "number"
+          },
+          "sell_speedup": {
+            "default": 0.0,
+            "minimum": 0,
+            "title": "Sell Speedup",
+            "type": "number"
+          }
+        },
+        "required": [
+          "levels",
+          "elasticity"
+        ],
+        "title": "DiscountRule",
+        "type": "object"
+      },
+      "TransportCost": {
+        "properties": {
+          "per_kg_km": {
+            "minimum": 0,
+            "title": "Per Kg Km",
+            "type": "number"
+          },
+          "per_truck_fixed": {
+            "minimum": 0,
+            "title": "Per Truck Fixed",
+            "type": "number"
+          },
+          "reefer_multiplier": {
+            "default": 1.0,
+            "minimum": 1.0,
+            "title": "Reefer Multiplier",
+            "type": "number"
+          }
+        },
+        "required": [
+          "per_kg_km",
+          "per_truck_fixed"
+        ],
+        "title": "TransportCost",
+        "type": "object"
+      }
+    },
+    "properties": {
+      "currency": {
+        "default": "INR",
+        "title": "Currency",
+        "type": "string"
+      },
+      "transport": {
+        "$ref": "#/$defs/TransportCost"
+      },
+      "handling_cost_per_kg": {
+        "minimum": 0,
+        "title": "Handling Cost Per Kg",
+        "type": "number"
+      },
+      "holding_cost_per_kg_day": {
+        "minimum": 0,
+        "title": "Holding Cost Per Kg Day",
+        "type": "number"
+      },
+      "discount": {
+        "$ref": "#/$defs/DiscountRule"
+      },
+      "spoilage": {
+        "additionalProperties": true,
+        "title": "Spoilage",
+        "type": "object"
+      },
+      "salvage": {
+        "additionalProperties": true,
+        "title": "Salvage",
+        "type": "object"
+      },
+      "carry_over": {
+        "additionalProperties": true,
+        "title": "Carry Over",
+        "type": "object"
+      },
+      "unmet_demand_penalty_per_kg": {
+        "default": 0.0,
+        "minimum": 0,
+        "title": "Unmet Demand Penalty Per Kg",
+        "type": "number"
+      },
+      "late_delivery": {
+        "default": "distress_sale",
+        "enum": [
+          "distress_sale",
+          "spoiled"
+        ],
+        "title": "Late Delivery",
+        "type": "string"
+      }
+    },
+    "required": [
+      "transport",
+      "handling_cost_per_kg",
+      "holding_cost_per_kg_day",
+      "discount"
+    ],
+    "title": "CostModel",
+    "type": "object"
+  },
+  "Scenario": {
+    "$defs": {
+      "DemandRow": {
+        "properties": {
+          "dest_id": {
+            "title": "Dest Id",
+            "type": "string"
+          },
+          "commodity": {
+            "title": "Commodity",
+            "type": "string"
+          },
+          "demand_kg": {
+            "minimum": 0,
+            "title": "Demand Kg",
+            "type": "number"
+          }
+        },
+        "required": [
+          "dest_id",
+          "commodity",
+          "demand_kg"
+        ],
+        "title": "DemandRow",
+        "type": "object"
+      }
+    },
+    "description": "A perturbation applied to a base instance (forecast-side changes the planner sees).",
+    "properties": {
+      "scenario_id": {
+        "title": "Scenario Id",
+        "type": "string"
+      },
+      "seed": {
+        "default": 0,
+        "title": "Seed",
+        "type": "integer"
+      },
+      "description": {
+        "default": "",
+        "title": "Description",
+        "type": "string"
+      },
+      "temp_offset_c": {
+        "default": 0.0,
+        "title": "Temp Offset C",
+        "type": "number"
+      },
+      "lane_temp_offset_c": {
+        "additionalProperties": {
+          "type": "number"
+        },
+        "title": "Lane Temp Offset C",
+        "type": "object"
+      },
+      "lane_delay_hours": {
+        "additionalProperties": {
+          "type": "number"
+        },
+        "title": "Lane Delay Hours",
+        "type": "object"
+      },
+      "capacity_multiplier": {
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "lane_id or '*' -> multiplier on max_trucks",
+        "title": "Capacity Multiplier",
+        "type": "object"
+      },
+      "demand_multiplier": {
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "keys 'dest|commodity', 'dest|*', '*|commodity' or '*'",
+        "title": "Demand Multiplier",
+        "type": "object"
+      },
+      "price_multiplier": {
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "same key format as demand_multiplier",
+        "title": "Price Multiplier",
+        "type": "object"
+      },
+      "new_orders": {
+        "items": {
+          "$ref": "#/$defs/DemandRow"
+        },
+        "title": "New Orders",
+        "type": "array"
+      },
+      "batch_life_multiplier": {
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "batch_id or '*' -> multiplier on estimated remaining life",
+        "title": "Batch Life Multiplier",
+        "type": "object"
+      },
+      "batch_qty_multiplier": {
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "batch_id or '*' -> multiplier on quantity",
+        "title": "Batch Qty Multiplier",
+        "type": "object"
+      },
+      "disruptions": {
+        "description": "human-readable tags, e.g. heatwave",
+        "items": {
+          "type": "string"
+        },
+        "title": "Disruptions",
+        "type": "array"
+      }
+    },
+    "required": [
+      "scenario_id"
+    ],
+    "title": "Scenario",
+    "type": "object"
+  }
+}
