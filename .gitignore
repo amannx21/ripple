@@ -7,3 +7,4 @@ results/runs/
 data/cache/live/
 *.egg-info/
 .DS_Store
+results/quick/

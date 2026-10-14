@@ -24,6 +24,12 @@ scenarios:
   tuning_seeds: [0, 100]         # half-open range [start, end) used ONLY for tuning
   heldout_seeds: [1000, 1500]    # half-open range, never used for tuning; headline numbers only
   alpha_grid: [0.02, 0.05, 0.10, 0.15, 0.20, 0.30]
+  alpha_selection_tolerance_pct: 0.5  # pick the SMALLEST alpha whose tuning-set mean net revenue is within this % of the best
+  disruption_seeds: [1000, 1060]  # held-out seeds re-used with a forced, known disruption (reporting only)
+  sensitivity_seeds: [3000, 3060] # separate reporting-only range for sensitivity analysis
+
+roi:                             # used only to translate computed per-cycle results into a monthly figure
+  dispatch_cycles_per_month: 26  # assumption: one dispatch cycle per working day
 
 live:
   user_agent: "FreshRoute-hackathon-demo/0.1 (Wild Bugs hackathon prototype; light use, cached)"
