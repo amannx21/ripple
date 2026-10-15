@@ -1,0 +1,11 @@
+# Dashboard theme: edit colours and fonts here when redesigning the UI.
+[theme]
+base = "light"
+primaryColor = "#1f7a5a"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f3f6f4"
+textColor = "#1d2522"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

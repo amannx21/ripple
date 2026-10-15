@@ -107,6 +107,14 @@ departure scan, simulated sensor, price replay + forecast) · 4 Simulator & Repl
 drop, demand spike, new order) · 5 Robustness & Sensitivity · 6 Explain (decision cards, counterfactuals, discount
 timing) · 7 ROI · 8 Data & Assumptions.
 
+## Changing the UI
+
+The UI is a separate layer, so it can be redesigned without touching the planner.
+- **Pages** are in `app/` (`Home.py` and `app/pages/*.py`). Shared loading, caching, badges and the sidebar live in `app/common.py`.
+- **Theme colours and fonts** are in `.streamlit/config.toml`. The badge styles are in the `BADGE_CSS` block in `app/common.py`.
+- **Numbers** must keep coming from `results/scorecard.json` and the `freshroute` package. Don't type them into the UI.
+- **After changes**, run `python -m pytest -q tests/test_app.py`. It renders every page headlessly and fails on any error.
+
 ## Documentation
 
 [ARCHITECTURE](docs/ARCHITECTURE.md) · [ASSUMPTIONS](docs/ASSUMPTIONS.md) · [BASELINE](docs/BASELINE.md) ·

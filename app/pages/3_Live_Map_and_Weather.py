@@ -70,7 +70,8 @@ def body():
     nodes += [{"name": d.name, "lon": d.lon, "lat": d.lat, "kind": "market", "color": [192, 96, 58]} for d in inst.destinations.values()]
     layers = [
         pdk.Layer("PathLayer", data=route_rows, get_path="path", get_color="color", get_width="width",
-                  width_units="pixels", pickable=True),
+                  widthUnits="pixels", widthScale=1, widthMinPixels=2, widthMaxPixels=12,
+                  capRounded=True, jointRounded=True, pickable=True),
         pdk.Layer("ScatterplotLayer", data=nodes, get_position="[lon, lat]", get_fill_color="color",
                   get_radius=18000, pickable=True),
     ]
