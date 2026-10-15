@@ -68,6 +68,8 @@ python -m freshroute.adapters.check       # validate whichever dataset will be u
 
 Everything runs offline. Live mode uses bundled cached responses when the network is unavailable.
 
+**Reproducibility check.** A fresh clone ran `make reproduce` and `make test` with network access blocked. It reproduced `results/scorecard.json` and `results/tuning.csv` byte for byte. Across all 2,000 held-out records, only the wall-clock `solve_time_s` column differs. Wall-clock timings live in `results/timing.json` and are kept out of the scorecard on purpose. `tests/test_reproduce.py` runs the pipeline twice with different worker counts and requires identical scorecards.
+
 ## Using the organizer dataset
 
 1. Put the files in `data/organizer/`, named `batches`, `destinations`, `lanes`, `prices`, `demand` (and optionally `hubs`, `commodities`) as `.csv`, `.json` or `.xlsx`.
