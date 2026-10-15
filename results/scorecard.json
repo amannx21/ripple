@@ -149,9 +149,7 @@
           "n": 500
         },
         "violations_mean": 16.944,
-        "plans_with_zero_violations_pct": 0.0,
-        "solve_time_s_mean": 0.0,
-        "solve_time_s_max": 0.0
+        "plans_with_zero_violations_pct": 0.0
       },
       "Baseline B: greedy-by-price": {
         "spoilage_pct": {
@@ -225,9 +223,7 @@
           "n": 500
         },
         "violations_mean": 17.174,
-        "plans_with_zero_violations_pct": 0.0,
-        "solve_time_s_mean": 0.0,
-        "solve_time_s_max": 0.0
+        "plans_with_zero_violations_pct": 0.0
       },
       "Deterministic optimizer (ablation)": {
         "spoilage_pct": {
@@ -301,9 +297,7 @@
           "n": 500
         },
         "violations_mean": 17.886,
-        "plans_with_zero_violations_pct": 0.0,
-        "solve_time_s_mean": 0.3104,
-        "solve_time_s_max": 0.587
+        "plans_with_zero_violations_pct": 0.0
       },
       "FreshRoute planner": {
         "spoilage_pct": {
@@ -377,9 +371,7 @@
           "n": 500
         },
         "violations_mean": 0.0,
-        "plans_with_zero_violations_pct": 100.0,
-        "solve_time_s_mean": 0.2903,
-        "solve_time_s_max": 0.6503
+        "plans_with_zero_violations_pct": 100.0
       }
     },
     "paired_vs_baselines": [
@@ -556,9 +548,7 @@
             "n": 60
           },
           "violations_mean": 17.05,
-          "plans_with_zero_violations_pct": 0.0,
-          "solve_time_s_mean": 0.0,
-          "solve_time_s_max": 0.0
+          "plans_with_zero_violations_pct": 0.0
         },
         "FreshRoute planner": {
           "spoilage_pct": {
@@ -583,9 +573,7 @@
             "n": 60
           },
           "violations_mean": 0.0,
-          "plans_with_zero_violations_pct": 100.0,
-          "solve_time_s_mean": 0.3166,
-          "solve_time_s_max": 0.6388
+          "plans_with_zero_violations_pct": 100.0
         },
         "Stale plan (no replan)": {
           "spoilage_pct": {
@@ -610,9 +598,7 @@
             "n": 60
           },
           "violations_mean": 0.9333,
-          "plans_with_zero_violations_pct": 28.3333,
-          "solve_time_s_mean": 0.3291,
-          "solve_time_s_max": 0.6531
+          "plans_with_zero_violations_pct": 28.3333
         }
       },
       "replan_vs_stale_net_revenue": {
@@ -665,9 +651,7 @@
             "n": 60
           },
           "violations_mean": 17.4667,
-          "plans_with_zero_violations_pct": 0.0,
-          "solve_time_s_mean": 0.0,
-          "solve_time_s_max": 0.0
+          "plans_with_zero_violations_pct": 0.0
         },
         "FreshRoute planner": {
           "spoilage_pct": {
@@ -692,9 +676,7 @@
             "n": 60
           },
           "violations_mean": 0.0,
-          "plans_with_zero_violations_pct": 100.0,
-          "solve_time_s_mean": 0.2899,
-          "solve_time_s_max": 0.5629
+          "plans_with_zero_violations_pct": 100.0
         },
         "Stale plan (no replan)": {
           "spoilage_pct": {
@@ -719,9 +701,7 @@
             "n": 60
           },
           "violations_mean": 6.5,
-          "plans_with_zero_violations_pct": 5.0,
-          "solve_time_s_mean": 0.339,
-          "solve_time_s_max": 1.1018
+          "plans_with_zero_violations_pct": 5.0
         }
       },
       "replan_vs_stale_net_revenue": {
@@ -774,9 +754,7 @@
             "n": 60
           },
           "violations_mean": 16.7333,
-          "plans_with_zero_violations_pct": 0.0,
-          "solve_time_s_mean": 0.0,
-          "solve_time_s_max": 0.0
+          "plans_with_zero_violations_pct": 0.0
         },
         "FreshRoute planner": {
           "spoilage_pct": {
@@ -801,9 +779,7 @@
             "n": 60
           },
           "violations_mean": 0.0,
-          "plans_with_zero_violations_pct": 100.0,
-          "solve_time_s_mean": 0.3288,
-          "solve_time_s_max": 0.6871
+          "plans_with_zero_violations_pct": 100.0
         },
         "Stale plan (no replan)": {
           "spoilage_pct": {
@@ -828,9 +804,7 @@
             "n": 60
           },
           "violations_mean": 0.0,
-          "plans_with_zero_violations_pct": 100.0,
-          "solve_time_s_mean": 0.3215,
-          "solve_time_s_max": 0.7416
+          "plans_with_zero_violations_pct": 100.0
         }
       },
       "replan_vs_stale_net_revenue": {
@@ -883,9 +857,7 @@
             "n": 60
           },
           "violations_mean": 21.3667,
-          "plans_with_zero_violations_pct": 0.0,
-          "solve_time_s_mean": 0.0,
-          "solve_time_s_max": 0.0
+          "plans_with_zero_violations_pct": 0.0
         },
         "FreshRoute planner": {
           "spoilage_pct": {
@@ -910,9 +882,7 @@
             "n": 60
           },
           "violations_mean": 0.0,
-          "plans_with_zero_violations_pct": 100.0,
-          "solve_time_s_mean": 0.2929,
-          "solve_time_s_max": 0.4473
+          "plans_with_zero_violations_pct": 100.0
         },
         "Stale plan (no replan)": {
           "spoilage_pct": {
@@ -937,9 +907,7 @@
             "n": 60
           },
           "violations_mean": 10.9167,
-          "plans_with_zero_violations_pct": 0.0,
-          "solve_time_s_mean": 0.318,
-          "solve_time_s_max": 0.7168
+          "plans_with_zero_violations_pct": 0.0
         }
       },
       "replan_vs_stale_net_revenue": {
@@ -992,9 +960,7 @@
             "n": 60
           },
           "violations_mean": 16.6667,
-          "plans_with_zero_violations_pct": 0.0,
-          "solve_time_s_mean": 0.0,
-          "solve_time_s_max": 0.0
+          "plans_with_zero_violations_pct": 0.0
         },
         "FreshRoute planner": {
           "spoilage_pct": {
@@ -1019,9 +985,7 @@
             "n": 60
           },
           "violations_mean": 0.0,
-          "plans_with_zero_violations_pct": 100.0,
-          "solve_time_s_mean": 0.3085,
-          "solve_time_s_max": 0.5466
+          "plans_with_zero_violations_pct": 100.0
         },
         "Stale plan (no replan)": {
           "spoilage_pct": {
@@ -1046,9 +1010,7 @@
             "n": 60
           },
           "violations_mean": 0.0,
-          "plans_with_zero_violations_pct": 100.0,
-          "solve_time_s_mean": 0.2922,
-          "solve_time_s_max": 0.8343
+          "plans_with_zero_violations_pct": 100.0
         }
       },
       "replan_vs_stale_net_revenue": {
@@ -1433,7 +1395,6 @@
   ],
   "base_plan": {
     "status": "Optimal",
-    "solve_time_s": 0.141,
     "violations": 0,
     "expected_net_inr": 2667041.8,
     "kg_by_action": {

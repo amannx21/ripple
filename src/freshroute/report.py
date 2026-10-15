@@ -17,7 +17,7 @@ def _inr(x: float) -> str:
     return f"₹{x / 1e5:,.2f} L"
 
 
-def render(sc: dict) -> str:
+def render(sc: dict, timing: dict | None = None) -> str:
     ss = sc["seed_sets"]
     h = sc["heldout"]["summary"]
     lines = [
@@ -48,9 +48,11 @@ def render(sc: dict) -> str:
         lines.append(f"| {c['metric']} | {c['mean_diff']:+,.2f}{unit} | [{c['ci95_low']:+,.2f}, {c['ci95_high']:+,.2f}] "
                      f"| {c['win_rate_pct']:.1f}% of scenarios |")
     bp = sc["base_plan"]
-    lines += ["", f"Base-instance plan: status {bp['status']}, **{bp['violations']} constraint violations**, solved in "
-              f"{bp['solve_time_s']} s. Mean solve time over held-out plans: "
-              f"{h['FreshRoute planner']['solve_time_s_mean']:.3f} s (max {h['FreshRoute planner']['solve_time_s_max']:.3f} s)."]
+    tm = timing or {}
+    pt = tm.get("heldout", {}).get("summary", {}).get("FreshRoute planner", {})
+    speed = (f" Planner solve time over held-out plans: mean {pt['solve_time_s_mean']:.3f} s, max "
+             f"{pt['solve_time_s_max']:.3f} s (wall-clock, results/timing.json)." if pt else "")
+    lines += ["", f"Base-instance plan: status {bp['status']}, **{bp['violations']} constraint violations**." + speed]
     if sc["data_source"] == "SYNTHETIC":
         lines += ["", "_Synthetic data and placeholder parameters: these numbers describe the method on a generated "
                       "dataset, not real-world performance._"]
@@ -63,14 +65,15 @@ def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     sc = json.loads((RESULTS_DIR / "scorecard.json").read_text())
-    md = render(sc)
-    (RESULTS_DIR / "RESULTS.md").write_text("# Results\n\n" + md + "\n", encoding="utf-8")
+    tp = RESULTS_DIR / "timing.json"
+    md = render(sc, json.loads(tp.read_text()) if tp.exists() else None)
+    (RESULTS_DIR / "RESULTS.md").write_text("# Results\n\n" + md + "\n", encoding="utf-8", newline="\n")
     readme = ROOT / "README.md"
     if readme.exists():
         txt = readme.read_text(encoding="utf-8")
         new = re.sub(r"<!-- RESULTS:START -->.*?<!-- RESULTS:END -->",
                      lambda _: "<!-- RESULTS:START -->\n" + md + "\n<!-- RESULTS:END -->", txt, flags=re.S)
-        readme.write_text(new, encoding="utf-8")
+        readme.write_text(new, encoding="utf-8", newline="\n")
     print(md)
 
 

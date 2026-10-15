@@ -2,7 +2,7 @@
   "method": "FreshRoute planner",
   "alpha": 0.15,
   "objective_expected_net_inr": 2667041.787750074,
-  "solve_time_s": 0.1413888999959454,
+  "solve_time_s": 0.12708099999872502,
   "status": "Optimal",
   "trucks": {
     "KLR-BLR": 2,

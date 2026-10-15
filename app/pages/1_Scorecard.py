@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from common import badge, load_records, load_scorecard, money, page_setup, safe
+from common import badge, load_records, load_scorecard, load_timing, money, page_setup, safe
 
 page_setup("Scorecard")
 
@@ -29,6 +29,7 @@ def body():
         st.caption("SYNTHETIC DATA: results describe the model on a generated dataset, not real-world performance.")
 
     h = sc["heldout"]["summary"]
+    tm = load_timing().get("heldout", {}).get("summary", {})
     rows = []
     for m, x in h.items():
         rows.append({
@@ -41,7 +42,7 @@ def body():
             "Min destination fill %": round(x["min_dest_fill_pct"]["mean"], 1),
             "Violations / plan": round(x["violations_mean"], 2),
             "Plans with 0 violations": f"{x['plans_with_zero_violations_pct']:.0f}%",
-            "Solve time (mean s)": round(x["solve_time_s_mean"], 3),
+            "Solve time (mean s)": round(tm.get(m, {}).get("solve_time_s_mean", float("nan")), 3),
         })
     df = pd.DataFrame(rows)
     order = list(COLORS)

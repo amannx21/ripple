@@ -18,6 +18,6 @@ Paired difference, FreshRoute minus Baseline A (FIFO), on the same scenarios and
 | net_revenue | +1,598,290.78 INR | [+1,556,806.18, +1,639,775.38] | 100.0% of scenarios |
 | spoiled_or_diverted_pct | -6.26 pts | [-6.69, -5.82] | 91.2% of scenarios |
 
-Base-instance plan: status Optimal, **0 constraint violations**, solved in 0.141 s. Mean solve time over held-out plans: 0.290 s (max 0.650 s).
+Base-instance plan: status Optimal, **0 constraint violations**. Planner solve time over held-out plans: mean 0.448 s, max 1.302 s (wall-clock, results/timing.json).
 
 _Synthetic data and placeholder parameters: these numbers describe the method on a generated dataset, not real-world performance._

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import time
 
 import numpy as np
@@ -50,12 +51,30 @@ def select_alpha(tune: pd.DataFrame, tol_pct: float) -> tuple[float, pd.DataFram
     return float(ok.alpha.min()), g
 
 
+def split_timing(obj):
+    """Remove wall-clock fields (solve_time*) from a nested dict; return (deterministic part, timing part)."""
+    if isinstance(obj, dict):
+        det, tim = {}, {}
+        for k, v in obj.items():
+            if str(k).startswith("solve_time"):
+                tim[k] = v
+                continue
+            d, t = split_timing(v)
+            det[k] = d
+            if t:
+                tim[k] = t
+        return det, tim
+    return obj, {}
+
+
 def main(argv=None) -> dict:
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true", help="small seed sets (smoke test); not for headline numbers")
     ap.add_argument("--workers", type=int, default=None)
     ap.add_argument("--data", default="auto", choices=["auto", "synthetic", "organizer"])
     args = ap.parse_args(argv)
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     t_start = time.perf_counter()
     out_dir = RESULTS_DIR / ("quick" if args.quick else "")
     fig_dir = out_dir / "figures" if args.quick else FIGURES_DIR
@@ -80,18 +99,14 @@ def main(argv=None) -> dict:
     t0 = time.perf_counter()
     tune = pd.DataFrame(run_parallel(tune_seed, [(sd, grid) for sd in tuning], args.workers, args.data))
     alpha, g = select_alpha(tune, float(s["scenarios"].get("alpha_selection_tolerance_pct", 0.5)))
-    tune.to_csv(out_dir / "tuning.csv", index=False)
+    tune.to_csv(out_dir / "tuning.csv", index=False, lineterminator="\n")
     print(f"[tuning] seeds {tuning[0]}-{tuning[-1]} ({len(tuning)}): alpha grid {grid} -> chosen alpha {alpha} "
-    import sys
-
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
           f"({time.perf_counter() - t0:.0f}s)")
 
     # 2. held-out evaluation
     t0 = time.perf_counter()
     held = pd.DataFrame(run_parallel(eval_seed, [(sd, "heldout", alpha, None) for sd in heldout], args.workers, args.data))
-    held.to_csv(out_dir / "heldout_records.csv", index=False)
+    held.to_csv(out_dir / "heldout_records.csv", index=False, lineterminator="\n")
     print(f"[held-out] seeds {heldout[0]}-{heldout[-1]} ({len(heldout)}) evaluated ({time.perf_counter() - t0:.0f}s)")
 
     # 3. organizer hidden scenarios, if any
@@ -101,20 +116,20 @@ def main(argv=None) -> dict:
         if scens:
             org = run_parallel(eval_seed, [(sc.seed, f"organizer:{sc.scenario_id}", alpha, sc) for sc in scens],
                                args.workers, args.data)
-            pd.DataFrame(org).to_csv(out_dir / "organizer_scenarios.csv", index=False)
+            pd.DataFrame(org).to_csv(out_dir / "organizer_scenarios.csv", index=False, lineterminator="\n")
             print(f"[organizer] {len(scens)} scenario(s) evaluated")
 
     # 4. disruption suite
     t0 = time.perf_counter()
     dis = pd.DataFrame(run_parallel(disruption_seed, [(sd, k, alpha) for k in DISRUPTIONS for sd in dis_seeds],
                                     args.workers, args.data))
-    dis.to_csv(out_dir / "disruption_records.csv", index=False)
+    dis.to_csv(out_dir / "disruption_records.csv", index=False, lineterminator="\n")
     print(f"[disruptions] {len(DISRUPTIONS)} kinds x {len(dis_seeds)} seeds ({time.perf_counter() - t0:.0f}s)")
 
     # 5. sensitivity
     t0 = time.perf_counter()
     sens = pd.DataFrame(run_parallel(sensitivity_seed, [(sd, alpha, grid) for sd in sens_seeds], args.workers, args.data))
-    sens.to_csv(out_dir / "sensitivity_records.csv", index=False)
+    sens.to_csv(out_dir / "sensitivity_records.csv", index=False, lineterminator="\n")
     print(f"[sensitivity] seeds {sens_seeds[0]}-{sens_seeds[-1]} ({time.perf_counter() - t0:.0f}s)")
 
     # 6. base-instance plan with decision cards
@@ -122,10 +137,10 @@ def main(argv=None) -> dict:
     plan = solve(base, risk, alpha=alpha)
     viol = check_plan(base, plan, risk)
     cards = counterfactual_cards(base, risk, plan)
-    plan.rows.to_csv(out_dir / "plan.csv", index=False)
-    (out_dir / "plan.json").write_text(plan.to_json())
-    risk.pairs.to_csv(out_dir / "risk_table.csv", index=False)
-    (out_dir / "decision_cards.json").write_text(json.dumps(_r(cards), indent=2))
+    plan.rows.to_csv(out_dir / "plan.csv", index=False, lineterminator="\n")
+    (out_dir / "plan.json").write_text(plan.to_json(), newline="\n")
+    risk.pairs.to_csv(out_dir / "risk_table.csv", index=False, lineterminator="\n")
+    (out_dir / "decision_cards.json").write_text(json.dumps(_r(cards), indent=2), newline="\n")
 
     # 7. scorecard
     metrics3 = ("spoilage_pct", "fulfillment_pct", "net_revenue")
@@ -180,7 +195,9 @@ def main(argv=None) -> dict:
                                                                      if label == "SYNTHETIC" else "organizer data."),
         },
     }
-    (out_dir / "scorecard.json").write_text(json.dumps(scorecard, indent=2))
+    scorecard, timing = split_timing(scorecard)  # timings are wall-clock, so they live in timing.json
+    (out_dir / "timing.json").write_text(json.dumps(timing, indent=2), newline=chr(10))
+    (out_dir / "scorecard.json").write_text(json.dumps(scorecard, indent=2), newline="\n")
 
     # 8. figures
     head_label = f"Held-out seeds {heldout[0]}-{heldout[-1]} (n={len(heldout)}), alpha={alpha}, {label} DATA"

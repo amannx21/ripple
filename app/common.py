@@ -113,6 +113,12 @@ def load_scorecard() -> dict | None:
 
 
 @st.cache_data(show_spinner=False)
+def load_timing() -> dict:
+    p = RESULTS_DIR / "timing.json"
+    return json.loads(p.read_text()) if p.exists() else {}
+
+
+@st.cache_data(show_spinner=False)
 def load_records(name: str) -> pd.DataFrame | None:
     p = RESULTS_DIR / name
     return pd.read_csv(p) if p.exists() else None

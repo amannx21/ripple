@@ -1,0 +1,107 @@
+{
+  "heldout": {
+    "summary": {
+      "Baseline A: FIFO": {
+        "solve_time_s_mean": 0.0,
+        "solve_time_s_max": 0.0
+      },
+      "Baseline B: greedy-by-price": {
+        "solve_time_s_mean": 0.0,
+        "solve_time_s_max": 0.0
+      },
+      "Deterministic optimizer (ablation)": {
+        "solve_time_s_mean": 0.4759,
+        "solve_time_s_max": 1.0858
+      },
+      "FreshRoute planner": {
+        "solve_time_s_mean": 0.4475,
+        "solve_time_s_max": 1.3024
+      }
+    }
+  },
+  "disruptions": {
+    "capacity_drop": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "solve_time_s_mean": 0.4332,
+          "solve_time_s_max": 0.8947
+        },
+        "Stale plan (no replan)": {
+          "solve_time_s_mean": 0.4464,
+          "solve_time_s_max": 0.9495
+        }
+      }
+    },
+    "delayed_truck": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "solve_time_s_mean": 0.3919,
+          "solve_time_s_max": 0.6184
+        },
+        "Stale plan (no replan)": {
+          "solve_time_s_mean": 0.4271,
+          "solve_time_s_max": 0.9584
+        }
+      }
+    },
+    "demand_spike": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "solve_time_s_mean": 0.4899,
+          "solve_time_s_max": 0.9835
+        },
+        "Stale plan (no replan)": {
+          "solve_time_s_mean": 0.4684,
+          "solve_time_s_max": 0.9769
+        }
+      }
+    },
+    "heatwave": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "solve_time_s_mean": 0.4082,
+          "solve_time_s_max": 0.6464
+        },
+        "Stale plan (no replan)": {
+          "solve_time_s_mean": 0.4397,
+          "solve_time_s_max": 0.8997
+        }
+      }
+    },
+    "new_order": {
+      "summary": {
+        "Baseline A: FIFO": {
+          "solve_time_s_mean": 0.0,
+          "solve_time_s_max": 0.0
+        },
+        "FreshRoute planner": {
+          "solve_time_s_mean": 0.448,
+          "solve_time_s_max": 0.8571
+        },
+        "Stale plan (no replan)": {
+          "solve_time_s_mean": 0.4177,
+          "solve_time_s_max": 1.0915
+        }
+      }
+    }
+  },
+  "base_plan": {
+    "solve_time_s": 0.127
+  }
+}
